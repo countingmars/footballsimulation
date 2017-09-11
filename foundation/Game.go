@@ -20,7 +20,7 @@ func (this *Game) Amend() *Game {
 
 	homeAbilityAmendedByAway := homeAbility.AmendBy(awayAbility)
 	awayAbilityAmendedByHome := awayAbility.AmendBy(homeAbility)
-	
+
 	return &Game{
 		Home: &Team{
 			Name: this.Home.Name,
