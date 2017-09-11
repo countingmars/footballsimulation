@@ -1,0 +1,130 @@
+{
+  "Name": "Manchester United",
+  "Ability": {
+    "DL": {
+      "Speed": { "Name": "Speed", "Point": 15},
+      "Health":  { "Name": "Health", "Point": 15},
+
+      "Dribble": { "Name": "Dribble", "Point": 15},
+      "Pass": { "Name": "Pass", "Point": 15},
+      "CrossPass": { "Name": "CrossPass", "Point": 15},
+      "Shoot": { "Name": "Shoot", "Point": 15},
+      "LongShoot": { "Name": "LongShoot", "Point": 15},
+
+      "Defence": { "Name": "Defence", "Point": 15},
+      "Attack": { "Name": "Attack", "Point": 15},
+      "Strategy": { "Name": "Strategy", "Point": 15}
+    },
+    "DR": {
+      "Speed": { "Name": "Speed", "Point": 15},
+      "Health":  { "Name": "Health", "Point": 15},
+
+      "Dribble": { "Name": "Dribble", "Point": 15},
+      "Pass": { "Name": "Pass", "Point": 15},
+      "CrossPass": { "Name": "CrossPass", "Point": 15},
+      "Shoot": { "Name": "Shoot", "Point": 15},
+      "LongShoot": { "Name": "LongShoot", "Point": 15},
+
+      "Defence": { "Name": "Defence", "Point": 15},
+      "Attack": { "Name": "Attack", "Point": 15},
+      "Strategy": { "Name": "Strategy", "Point": 15}
+    },
+    "DC": {
+      "Speed": { "Name": "Speed", "Point": 15},
+      "Health":  { "Name": "Health", "Point": 15},
+
+      "Dribble": { "Name": "Dribble", "Point": 15},
+      "Pass": { "Name": "Pass", "Point": 15},
+      "CrossPass": { "Name": "CrossPass", "Point": 15},
+      "Shoot": { "Name": "Shoot", "Point": 15},
+      "LongShoot": { "Name": "LongShoot", "Point": 15},
+
+      "Defence": { "Name": "Defence", "Point": 15},
+      "Attack": { "Name": "Attack", "Point": 15},
+      "Strategy": { "Name": "Strategy", "Point": 15}
+    },
+    "ML": {
+      "Speed": { "Name": "Speed", "Point": 10},
+      "Health":  { "Name": "Health", "Point": 10},
+
+      "Dribble": { "Name": "Dribble", "Point": 10},
+      "Pass": { "Name": "Pass", "Point": 10},
+      "CrossPass": { "Name": "CrossPass", "Point": 10},
+      "Shoot": { "Name": "Shoot", "Point": 10},
+      "LongShoot": { "Name": "LongShoot", "Point": 10},
+
+      "Defence": { "Name": "Defence", "Point": 10},
+      "Attack": { "Name": "Attack", "Point": 10},
+      "Strategy": { "Name": "Strategy", "Point": 10}
+    },
+    "MR": {
+      "Speed": { "Name": "Speed", "Point": 10},
+      "Health":  { "Name": "Health", "Point": 10},
+
+      "Dribble": { "Name": "Dribble", "Point": 10},
+      "Pass": { "Name": "Pass", "Point": 10},
+      "CrossPass": { "Name": "CrossPass", "Point": 10},
+      "Shoot": { "Name": "Shoot", "Point": 10},
+      "LongShoot": { "Name": "LongShoot", "Point": 10},
+
+      "Defence": { "Name": "Defence", "Point": 10},
+      "Attack": { "Name": "Attack", "Point": 10},
+      "Strategy": { "Name": "Strategy", "Point": 10}
+    },
+    "MC": {
+      "Speed": { "Name": "Speed", "Point": 10},
+      "Health":  { "Name": "Health", "Point": 10},
+
+      "Dribble": { "Name": "Dribble", "Point": 10},
+      "Pass": { "Name": "Pass", "Point": 10},
+      "CrossPass": { "Name": "CrossPass", "Point": 10},
+      "Shoot": { "Name": "Shoot", "Point": 10},
+      "LongShoot": { "Name": "LongShoot", "Point": 10},
+
+      "Defence": { "Name": "Defence", "Point": 10},
+      "Attack": { "Name": "Attack", "Point": 10},
+      "Strategy": { "Name": "Strategy", "Point": 10}
+    },
+    "FL": {
+      "Speed": { "Name": "Speed", "Point": 10},
+      "Health":  { "Name": "Health", "Point": 10},
+
+      "Dribble": { "Name": "Dribble", "Point": 10},
+      "Pass": { "Name": "Pass", "Point": 10},
+      "CrossPass": { "Name": "CrossPass", "Point": 10},
+      "Shoot": { "Name": "Shoot", "Point": 10},
+      "LongShoot": { "Name": "LongShoot", "Point": 10},
+
+      "Defence": { "Name": "Defence", "Point": 10},
+      "Attack": { "Name": "Attack", "Point": 10},
+      "Strategy": { "Name": "Strategy", "Point": 10}
+    },"FR": {
+      "Speed": { "Name": "Speed", "Point": 10},
+      "Health":  { "Name": "Health", "Point": 10},
+
+      "Dribble": { "Name": "Dribble", "Point": 10},
+      "Pass": { "Name": "Pass", "Point": 10},
+      "CrossPass": { "Name": "CrossPass", "Point": 10},
+      "Shoot": { "Name": "Shoot", "Point": 10},
+      "LongShoot": { "Name": "LongShoot", "Point": 10},
+
+      "Defence": { "Name": "Defence", "Point": 10},
+      "Attack": { "Name": "Attack", "Point": 10},
+      "Strategy": { "Name": "Strategy", "Point": 10}
+    },
+    "FC": {
+      "Speed": { "Name": "Speed", "Point": 10},
+      "Health":  { "Name": "Health", "Point": 10},
+
+      "Dribble": { "Name": "Dribble", "Point": 10},
+      "Pass": { "Name": "Pass", "Point": 10},
+      "CrossPass": { "Name": "CrossPass", "Point": 10},
+      "Shoot": { "Name": "Shoot", "Point": 10},
+      "LongShoot": { "Name": "LongShoot", "Point": 10},
+
+      "Defence": { "Name": "Defence", "Point": 10},
+      "Attack": { "Name": "Attack", "Point": 10},
+      "Strategy": { "Name": "Strategy", "Point": 10}
+    }
+  }
+}

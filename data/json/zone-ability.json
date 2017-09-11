@@ -1,0 +1,10 @@
+{
+  "Speed": {
+    "Name": "Speed",
+    "Point": 19
+  },
+  "Health": {
+    "Name": "Health",
+    "Point": 19
+  }
+}
