@@ -32,11 +32,9 @@ func commentHighlights(highlights []Highlight) string {
 }
 func commentTeam(team *Team) string {
 	inspection := team.Ability.Inspect()
-	effected := team.Ability.AmendBySelf()
-	return fmt.Sprintf("%s (%d[%d] good %s)",
+	return fmt.Sprintf("%s (%d good %s)",
 		team.Name,
 		team.Ability.Sum(),
-		effected.Sum(),
 		inspection.Style)
 }
 func commentScore(sim *GameSimulation) string {

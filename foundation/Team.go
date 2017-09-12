@@ -5,7 +5,13 @@ type Team struct {
 	Ability TeamAbility
 }
 
-func (t* Team) Equals(other *Team) bool {
-	return t.Name == other.Name
+func (this* Team) Equals(other *Team) bool {
+	return this.Name == other.Name
 }
 
+func (this *Team) Clone() *Team {
+	return &Team{
+		Name: this.Name,
+		Ability: this.Ability.Clone(),
+	}
+}

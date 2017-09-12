@@ -11,10 +11,13 @@ import (
 func main() {
 	fmt.Println("fb started")
 
-	manchester := LoadTeam("./data/json/team-manu.json")
-	madrid := LoadTeam("./data/json/team-real.json")
+	model := LoadTeam("./data/json/team-perfect.json")
+	ManchesterUnited := model.Clone()
+	ManchesterUnited.Name = "Manchester United"
+	RealMadrid := model.Clone()
+	RealMadrid.Name = "Real Madrid"
 
-	game := &Game {manchester, madrid}
+	game := &Game {ManchesterUnited, RealMadrid}
 	simulator := CreateGameSimulator()
 
 	manuWinCount := 0
@@ -24,7 +27,7 @@ func main() {
 		simulation := simulator.Simulate(game)
 		if simulation.Draw == true {
 			drawCount++
-		} else if simulation.Winner.Equals(manchester) {
+		} else if simulation.Winner.Equals(ManchesterUnited) {
 			manuWinCount++ 
 		} else { 
 			realWinCount++

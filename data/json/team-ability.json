@@ -1,12 +1,15 @@
 {
   "DL": {
-    "Speed": {
-      "Name": "Speed",
-      "Point": 19
-    },
-    "Health": {
-      "Name": "Health",
-      "Point": 19
+    "Name": "DL",
+    "Attributes": {
+      "Speed": {
+        "Name": "Speed",
+        "Point": 19
+      },
+      "Health": {
+        "Name": "Health",
+        "Point": 19
+      }
     }
   }
 }

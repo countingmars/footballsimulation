@@ -6,7 +6,7 @@ import (
 )
 
 func TestLoadAbility(t *testing.T) {
-	actual := &Ability{}
+	actual := &Attribute{}
 	LoadJsonFile("json/ability.json", actual)
 
 	if actual.Point != 19 {
@@ -33,7 +33,7 @@ func TestLoadTeam(t *testing.T) {
 	actual := &Team{}
 	LoadJsonFile("json/team-perfect.json", actual)
 
-	if 1800 != actual.Ability.Sum() {
-		t.Error("This team's power should be 1800, but ", actual.Ability.Sum())
+	if 2600 != actual.Ability.Sum() {
+		t.Error("This team's power should be 2600, but ", actual.Ability.Sum())
 	}
 }

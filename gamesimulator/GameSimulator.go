@@ -17,7 +17,7 @@ func CreateGameSimulator() *GameSimulator {
 }
 func (this *GameSimulator) Simulate(game *Game) *GameSimulation {
 	simulation := &GameSimulation {
-		Game: game.Amend(),
+		Game: game,
 	}
 
 	this.winner.Simulate(simulation)

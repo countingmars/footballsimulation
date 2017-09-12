@@ -4,16 +4,16 @@ import (
 	"testing"
 )
 
-
-func newZoneAbility(name string, point int) ZoneAbility {
+func newZoneAbility(zoneName string, attrName string, point int) ZoneAbility {
 	return ZoneAbility{
-			name: &Ability{name, point},
-		}
+		Name: zoneName,
+		Attributes: map[string]*Attribute { attrName: &Attribute{attrName, point }},
+	}
 }
 func TestTeamAbility_Sum(t *testing.T) {
 	teamAbility := TeamAbility{}
-	teamAbility[DL] = newZoneAbility(AB_ATTACK, 1)
-	teamAbility[DR] = newZoneAbility(AB_DEFENCE, 1)
+	teamAbility[DL] = newZoneAbility(DL, AB_ATTACK, 1)
+	teamAbility[DR] = newZoneAbility(DR, AB_DEFENCE, 1)
 
 	actual := teamAbility.Sum()
 
@@ -24,9 +24,9 @@ func TestTeamAbility_Sum(t *testing.T) {
 
 func TestTeamAbility_Inspect(t *testing.T) {
 	teamAbility := TeamAbility{}
-	teamAbility[DL] = newZoneAbility(AB_ATTACK, 3)
-	teamAbility[ML] = newZoneAbility(AB_ATTACK, 6)
-	teamAbility[FL] = newZoneAbility(AB_ATTACK, 9)
+	teamAbility[DL] = newZoneAbility(DL, AB_ATTACK, 3)
+	teamAbility[ML] = newZoneAbility(ML, AB_ATTACK, 6)
+	teamAbility[FL] = newZoneAbility(FL, AB_ATTACK, 9)
 
 	actual := teamAbility.Inspect()
 
@@ -43,14 +43,15 @@ func TestTeamAbility_Inspect(t *testing.T) {
 		t.Error("The style should be balance style, but", actual.Weakness)
 	}
 }
-func TestTeamAbility_Effect(t *testing.T) {
-	ability := TeamAbility{}
-	ability[DL] = newZoneAbility(AB_ATTACK, 150)
-	ability[DC] = newZoneAbility(AB_ATTACK, 200)
 
-	actual := Effect{ability[DL], ability[DC], 0.35}.Calculate()
+func TestTeamAbility_Possession(t *testing.T) {
+	teamAbility := TeamAbility{
+		MC: newZoneAbility(MC, AB_PASS, 10),
+	}
 
-	if actual != 17 {
-		t.Error("The effect of DL to DC should be 17, but ", actual)
+	actual := teamAbility.Possession()
+
+	if actual != 60 {
+		t.Error("expected possession 60 (pass * attr factory 30 * zone factor 2), but ", actual)
 	}
 }

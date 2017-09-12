@@ -9,8 +9,8 @@ const (
 	TAI_COUNTER = "counter"
 )
 type TeamAbilityInspection struct {
-	Strength *Ability
-	Weakness *Ability
+	Strength *Attribute
+	Weakness *Attribute
 	Style string
 }
 
