@@ -5,7 +5,7 @@ import (
 	. "github.com/countingmars/fb/foundation"
 	. "github.com/countingmars/fb/misc"
 	"reflect"
-	"fmt"
+
 )
 
 func LoadTeam(filename string) *Team {
@@ -20,7 +20,4 @@ func LoadJsonFile(filename string, destin interface{}) {
 	}
 	bytes := LoadFile(filename)
 	json.Unmarshal(bytes, destin)
-
-	fmt.Println(string(bytes))
-	fmt.Println(destin)
 }

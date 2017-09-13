@@ -6,6 +6,7 @@ const (
 	AB_SPEED = "Speed"
 	AB_HEALTH = "Health"
 	AB_WORKRATE = "Workrate"
+	AB_STRENGTH = "Strength"
 
 	AB_DRIBBLE = "Dribble"
 	AB_PASS = "Pass"
@@ -13,6 +14,8 @@ const (
 	AB_SHOOT = "Shoot"
 	AB_LONGSHOOT = "LongShoot"
 
+	AB_TACKLE = "Tackle"
+	AB_MARK = "Mark"
 	AB_ANTICIPATION = "Anticipation"
 	AB_POSITIONING = "Positioning"
 	AB_OFFTHEBALL = "Offtheball"
@@ -32,60 +35,40 @@ func (this ZoneAbility) Avg() int {
 	return this.Sum() / len(this.Attributes)
 }
 
-var PossessionZoneFactors = map[string]PossessionAttrFactor{
-	MC: PossessionAttrFactor{
-		Factor: 2.0,
-		AttrFactors: map[string]float32 {
-			// technical factors
-			AB_PASS: 3.0,
-			AB_DRIBBLE: 1.0,
-			// mental factors
-			AB_OFFTHEBALL: 1.5,
-			AB_DECISION: 1.2,
-			AB_WORKRATE: 2.0,
-			AB_ANTICIPATION: 1.2,
-			// physical factors
-			AB_SPEED: 1.2,
-		},
-	},
-}
-type PossessionAttrFactor struct {
-	Factor      float32
-	AttrFactors map[string]float32
-}
-/*
-var PossesionZoneFactor = map[string]PossesionAttributeFactor {
-	MC: PossesionAttributeFactor{
-		// technical factors
-		AB_PASS: 3.0,
-		AB_DRIBBLE: 1.0,
-		// mental factors
-		AB_OFFTHEBALL: 1.5,
-		AB_DECISION: 1.2,
-		AB_WORKRATE: 2.0,
-		AB_ANTICIPATION: 1.2,
-		// physical factors
-		AB_SPEED: 1.2,
-	},
 
-}*/
-func (this ZoneAbility) Posession() int {
-	var sum float32
-	for key, factor := range PossessionZoneFactors[this.Name].AttrFactors {
-		attirubte, ok := this.Attributes[key]
-		if ok {
-			sum += float32(attirubte.Point) * factor
-		}
+func (this ZoneAbility) calculateAttr(key string, factor float32) float32 {
+	attribute, ok := this.Attributes[key]
+	if ok {
+		return float32(attribute.Point) * factor
+	} else {
+		return 0
 	}
-	sum *= PossessionZoneFactors[this.Name].Factor
+}
+func (this ZoneAbility) Scoring() int {
+	var sum float32
+	for key, factor := range ScoringFactor.AttrFactors {
+		sum += this.calculateAttr(key, factor)
+	}
 	return int(sum)
 }
-func (this ZoneAbility) Defence() {
-
+func (this ZoneAbility) Posession() int {
+	return this.calculate(PossessionFactors)
 }
-func (this ZoneAbility) Offence() {
-
+func (this ZoneAbility) Defence() int {
+	return this.calculate(DefenceFactors)
 }
+func (this ZoneAbility) Offence() int {
+	return this.calculate(OffenceFactors)
+}
+func (this ZoneAbility) calculate(positionAttrFactors PositionAttrFactors) int {
+	var sum float32
+	for key, factor := range positionAttrFactors[this.Name].AttrFactors {
+		sum += this.calculateAttr(key, factor)
+	}
+	sum *= positionAttrFactors[this.Name].Factor
+	return int(sum)
+}
+
 func (this ZoneAbility) Sum() int {
 	sum := 0
 	for _, v := range this.Attributes {
