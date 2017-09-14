@@ -18,13 +18,16 @@ func (this *Commentor) Comment(sim *GameSimulation) Comment {
 	homeComment := commentTeam(sim.Game.Home)
 	awayComment := commentTeam(sim.Game.Away)
 	scoreComment := commentScore(sim)
-	highlightComment := commentHighlights(sim.Highlights)
+	firstHalfHighlightComment := commentHighlights(sim.First)
+	secondHalfHighlightComment := commentHighlights(sim.Second)
 	return Comment {
-		Message: fmt.Sprintf("%s vs %s\n%s\n%s",
+		Message: fmt.Sprintf("%s vs %s\n%s\nfirst half\n%s\nsecond half\n%s",
 			homeComment,
 			awayComment,
 			scoreComment,
-			highlightComment),
+			firstHalfHighlightComment,
+			secondHalfHighlightComment,
+		),
 	}
 }
 func commentHighlights(highlights []Highlight) string {

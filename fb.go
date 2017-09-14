@@ -18,7 +18,7 @@ func main() {
 	RealMadrid.Name = "Real Madrid"
 
 	game := &Game {ManchesterUnited, RealMadrid}
-	simulator := CreateGameSimulator()
+	simulator := GameSimulator{}
 
 	manuWinCount := 0
 	realWinCount := 0
