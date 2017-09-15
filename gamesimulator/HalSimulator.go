@@ -2,6 +2,7 @@ package gamesimulator
 
 import (
 	. "github.com/countingmars/fb/foundation"
+	"fmt"
 )
 
 
@@ -17,7 +18,7 @@ type HalfSimulator struct {
 func NewHalfSimulator(left TeamAbility, right TeamAbility) HalfSimulator {
 	return HalfSimulator{
 		Timer: &Timer{},
-		Ball: &Ball{Position: MC, Chance: false },
+		Ball: &Ball{},
 		Side: Left,
 		Left: left,
 		Right: right,
@@ -25,6 +26,7 @@ func NewHalfSimulator(left TeamAbility, right TeamAbility) HalfSimulator {
 	}
 }
 func (this *HalfSimulator) Simulate() HalfSimulation {
+	this.Ball.KickOff()
 	var halfSimulation = HalfSimulation{}
 	for false == this.Timer.Over() {
 		hl := this.simulateAttack()
@@ -32,7 +34,9 @@ func (this *HalfSimulator) Simulate() HalfSimulation {
 
 		this.Side = this.Side.Reverse()
 		this.Timer.Go()
+
 	}
+	fmt.Println()
 	return halfSimulation
 }
 func (this *HalfSimulator) simulateAttack() Highlight {
@@ -54,34 +58,38 @@ func (this *HalfSimulator) simulateAttackFromRight() Highlight {
 }
 func (this *HalfSimulator) simulateAttackFromTo(offender TeamAbility, defender TeamAbility) Highlight {
 	for {
-		buildup := this.simulateBuildup(offender, defender)
-		if buildup.Ball.Chance {
-			penetration := this.simulatePenetration(offender, defender)
-			if penetration.Scored() {
-				return this.HighlightSimulator.SimulateGoal()
-			} else {
-				return this.HighlightSimulator.SimulateShoot()
+		success := SimulateBuildup(offender, defender, this.Ball, this.Side)
+		if success {
+			if this.Ball.Chance(this.Side) {
+				penetration := this.simulatePenetration(offender, defender)
+				if penetration.Scored() {
+					return this.HighlightSimulator.SimulateGoal()
+				} else {
+					return this.HighlightSimulator.SimulateShoot()
+				}
 			}
-		}
-		if &buildup.Possessor == &defender {
+		} else {
 			return Highlight{}
 		}
 	}
 }
 
-func (this *HalfSimulator) simulateBuildup(offender TeamAbility, defender TeamAbility) Buildup {
-	sum := offender[this.Ball.Position].Offence() + defender[this.Ball.Position].Defence()
+func SimulateBuildup(offender TeamAbility, defender TeamAbility, ball *Ball, side Side) bool {
+	position := ball.Position(side)
+
+	sum := offender[position].Offence() + defender[position].Defence()
 	point := Dice(sum).Throw()
-	if point < offender[this.Ball.Position].Offence() {
-		this.Ball.Forward()
-		return Buildup{ offender, this.Ball }
+
+	if point < offender[position].Offence() {
+		ball.Forward(side)
+		return true
 	} else {
-		return Buildup{ defender, this.Ball }
+		return false
 	}
 }
 
 func (this *HalfSimulator)  simulatePenetration(offender TeamAbility, defender TeamAbility) Penetration {
-	scoring := offender[this.Ball.Position].Scoring()
+	scoring := offender[this.Ball.Position(this.Side)].Scoring()
 	point := Dice(scoring).Throw()
 
 	if point > scoring / 10 {
