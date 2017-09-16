@@ -1,4 +1,4 @@
-package simulator
+package game
 
 
 type Side string

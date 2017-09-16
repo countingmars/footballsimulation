@@ -1,4 +1,4 @@
-package simulator
+package game
 
 
 var GoalHighlights = []Highlight {

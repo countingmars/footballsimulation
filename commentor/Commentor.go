@@ -3,7 +3,7 @@ package commentor
 import (
 	"fmt"
 	. "github.com/countingmars/fb/foundation"
-	. "github.com/countingmars/fb/simulator"
+	. "github.com/countingmars/fb/simulator/game"
 )
 
 type Commentor struct {
