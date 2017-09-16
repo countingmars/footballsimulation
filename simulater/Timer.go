@@ -1,4 +1,4 @@
-package simulate
+package simulater
 
 type Timer struct {
 	time int

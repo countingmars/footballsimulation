@@ -1,8 +1,8 @@
-package simulate
+package simulater
 
 import (
 	"github.com/countingmars/fb/base"
-	"github.com/countingmars/fb/simulate/dice"
+	"github.com/countingmars/fb/simulater/dice"
 )
 
 type Ball struct {

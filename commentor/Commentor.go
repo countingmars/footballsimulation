@@ -3,7 +3,7 @@ package commentor
 import (
 	"fmt"
 	. "github.com/countingmars/fb/base"
-	. "github.com/countingmars/fb/simulate"
+	. "github.com/countingmars/fb/simulater"
 )
 
 func Comment(sim *Simulation) string {

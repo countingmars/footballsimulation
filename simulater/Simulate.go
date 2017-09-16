@@ -1,8 +1,8 @@
-package simulate
+package simulater
 
 import (
 	"github.com/countingmars/fb/base"
-	"github.com/countingmars/fb/simulate/dice"
+	"github.com/countingmars/fb/simulater/dice"
 )
 
 func Simulate(home *base.Team, away *base.Team) *Simulation {
@@ -26,15 +26,15 @@ func simulateHalf(left base.TeamAbility, right base.TeamAbility) Highlights {
 	}
 	situation.Ball.KickOff()
 
-	var halfSimulation = Highlights{}
+	var highlights = Highlights{}
 	for false == situation.Timer.Over() {
 		hl := simulateAttack(situation)
-		halfSimulation = append(halfSimulation, hl)
+		highlights = append(highlights, hl)
 
 		situation.Side = situation.Side.Reverse()
 		situation.Timer.Go()
 	}
-	return halfSimulation
+	return highlights
 }
 func simulateAttack(situation *Situation) Highlight {
 	hl := simulateHighlight(situation)

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/countingmars/fb/simulate"
+	"github.com/countingmars/fb/simulater"
 	"github.com/countingmars/fb/commentor"
 	"github.com/countingmars/fb/data"
 )
@@ -20,7 +20,7 @@ func main() {
 	realWinCount := 0
 	drawCount := 0
 	for i := 1; i <= 100; i++ {
-		simulation := simulate.Simulate(ManchesterUnited, RealMadrid)
+		simulation := simulater.Simulate(ManchesterUnited, RealMadrid)
 		if simulation.Draw() {
 			drawCount++
 		} else if simulation.Win() {
