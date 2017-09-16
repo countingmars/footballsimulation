@@ -10,7 +10,7 @@ import (
 func main() {
 	fmt.Println("fb started")
 
-	model := data.LoadTeam("./data/json/team-perfect.json")
+	model := data.LoadTeam("/json/team-perfect.json")
 	ManchesterUnited := model.Clone()
 	ManchesterUnited.Name = "Manchester United"
 	RealMadrid := model.Clone()

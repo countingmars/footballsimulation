@@ -6,7 +6,7 @@ import (
 )
 
 func TestSimulate_simulateBuildup(t *testing.T) {
-	home := data.LoadTeam("../data/json/team-perfect.json")
+	home := data.LoadTeam("/json/team-perfect.json")
 	away := home.Clone()
 	away.Ability.Set(0)
 
@@ -18,7 +18,7 @@ func TestSimulate_simulateBuildup(t *testing.T) {
 }
 
 func TestSimulate_simulateAttack(t *testing.T) {
-	home := data.LoadTeam("../data/json/team-perfect.json")
+	home := data.LoadTeam("/json/team-perfect.json")
 	away := home.Clone()
 	away.Ability.Set(0)
 
