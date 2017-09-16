@@ -1,25 +1,25 @@
 package simulate
 
 import (
-	"github.com/countingmars/fb/core"
+	"github.com/countingmars/fb/base"
 )
 
 type Situation struct {
 	Timer *Timer
-	Ball *Ball
-	Side Side
-	Left core.TeamAbility
-	Right core.TeamAbility
+	Ball  *Ball
+	Side  Side
+	Left  base.TeamAbility
+	Right base.TeamAbility
 }
 
-func (this *Situation) Offender() core.TeamAbility {
+func (this *Situation) Offender() base.TeamAbility {
 	if this.Side == Left {
 		return this.Left
 	} else {
 		return this.Right
 	}
 }
-func (this *Situation) Defender() core.TeamAbility {
+func (this *Situation) Defender() base.TeamAbility {
 	if this.Side == Left {
 		return this.Right
 	} else {

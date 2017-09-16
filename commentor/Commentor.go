@@ -2,7 +2,7 @@ package commentor
 
 import (
 	"fmt"
-	. "github.com/countingmars/fb/core"
+	. "github.com/countingmars/fb/base"
 	. "github.com/countingmars/fb/simulate"
 )
 
