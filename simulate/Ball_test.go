@@ -1,8 +1,8 @@
-package game
+package simulate
 
 import (
 	"testing"
-	. "github.com/countingmars/fb/foundation"
+	"github.com/countingmars/fb/core"
 )
 
 func TestBall_PositionForLeft(t *testing.T) {
@@ -13,19 +13,19 @@ func TestBall_PositionForLeft(t *testing.T) {
 }
 
 func testPositionFor(t *testing.T, ball Ball, side Side) {
-	ball.KickOff(side)
+	ball.KickOff()
 	ballPositionShouldBe(ball.Zone(), "M", t)
 
 	ball.Forward()
 	ballPositionShouldBe(ball.Zone(), "F", t)
 
 	ball.Forward()
-	if Zones.GK != ball.Zone() {
+	if core.Zones.GK != ball.Zone() {
 		t.Error("chance should be returned as true")
 	}
 }
 
-func ballPositionShouldBe(zone Zone, line string, t *testing.T) {
+func ballPositionShouldBe(zone core.Zone, line string, t *testing.T) {
 	if false == zone.In(line) {
 		t.Error("ball position expected " + line + ", but ", zone)
 	}

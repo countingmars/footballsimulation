@@ -1,4 +1,4 @@
-package game
+package simulate
 
 
 type Side string

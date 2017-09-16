@@ -1,4 +1,13 @@
-package game
+package simulate
+
+
+
+type HighlightType string
+
+const (
+	Goal HighlightType = "goal"
+	Shoot HighlightType = "shoot"
+)
 
 
 var GoalHighlights = []Highlight {
@@ -30,4 +39,17 @@ type Highlight struct {
 	Time int
 	Type HighlightType
 	Message string
+}
+
+
+type Highlights []Highlight
+
+func (this Highlights) Goals(side Side) int {
+	goals := 0
+	for _, v := range this {
+		if v.Side == side && v.Type == Goal {
+			goals++
+		}
+	}
+	return goals
 }

@@ -1,4 +1,4 @@
-package foundation
+package dice
 
 import (
 	"testing"
@@ -6,7 +6,7 @@ import (
 
 func TestHedronDice_Throw(t *testing.T) {
 	for {
-		point := Dice(3).Throw()
+		point := Throw(3)
 
 		if point == 0 {
 			break

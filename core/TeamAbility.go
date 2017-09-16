@@ -1,14 +1,18 @@
-package foundation
+package core
 
 
 type TeamAbility map[Zone]ZoneAbility
 
-func (this TeamAbility) Defence(position Zone) int {
-	return this[position].Defence()
+func (this TeamAbility) Scoring(zone Zone) int {
+	return this[zone].Scoring()
 }
 
-func (this TeamAbility) Offence(position Zone) int {
-	return this[position].Offence()
+func (this TeamAbility) Defence(zone Zone) int {
+	return this[zone].Defence()
+}
+
+func (this TeamAbility) Offence(zone Zone) int {
+	return this[zone].Offence()
 }
 
 
@@ -48,12 +52,12 @@ func (this TeamAbility) Inspect() *TeamAbilityInspection {
 
 	return inspection
 }
-func (this TeamAbility) avg(zoneNames ... Zone) int {
+func (this TeamAbility) avg(zones ... Zone) int {
 	sum := 0
-	for _, name := range zoneNames {
-		sum += this[name].Sum()
+	for _, zone := range zones {
+		sum += this[zone].Sum()
 	}
-	return sum / len(zoneNames)
+	return sum / len(zones)
 }
 
 func (this TeamAbility) Sum() int {

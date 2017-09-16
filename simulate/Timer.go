@@ -1,4 +1,4 @@
-package game
+package simulate
 
 type Timer struct {
 	time int
@@ -6,9 +6,9 @@ type Timer struct {
 func (this *Timer) Now() int {
 	return this.time
 }
-func (this *Timer) Go() int {
+func (this *Timer) Go() bool {
 	this.time++
-	return this.time
+	return false == this.Over()
 }
 func (this *Timer) Over() bool {
 	return this.time >= 10

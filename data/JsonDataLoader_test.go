@@ -2,11 +2,11 @@ package data
 
 import (
 	"testing"
-	. "github.com/countingmars/fb/foundation"
+	"github.com/countingmars/fb/core"
 )
 
 func TestLoadAbility(t *testing.T) {
-	actual := &Attribute{}
+	actual := &core.Attribute{}
 	LoadJsonFile("json/ability.json", actual)
 
 	if actual.Point != 19 {
@@ -14,7 +14,7 @@ func TestLoadAbility(t *testing.T) {
 	}
 }
 func TestLoadZoneAbility(t *testing.T) {
-	actual := &ZoneAbility{}
+	actual := &core.ZoneAbility{}
 	LoadJsonFile("json/zone-ability.json", actual)
 
 	if actual.Sum() != 38 {
@@ -22,7 +22,7 @@ func TestLoadZoneAbility(t *testing.T) {
 	}
 }
 func TestLoadTeamAbility(t *testing.T) {
-	actual := &TeamAbility{}
+	actual := &core.TeamAbility{}
 	LoadJsonFile("json/team-ability.json", actual)
 
 	if actual.Sum() != 38 {
@@ -30,7 +30,7 @@ func TestLoadTeamAbility(t *testing.T) {
 	}
 }
 func TestLoadTeam(t *testing.T) {
-	actual := &Team{}
+	actual := &core.Team{}
 	LoadJsonFile("json/team-perfect.json", actual)
 
 	if 2600 != actual.Ability.Sum() {

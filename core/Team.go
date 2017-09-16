@@ -1,4 +1,4 @@
-package foundation
+package core
 
 type Team struct {
 	Name    string

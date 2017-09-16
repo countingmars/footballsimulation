@@ -1,9 +1,9 @@
-package game
+package simulate
 
 import "testing"
 
-func TestHalfSimulation_Append(t *testing.T) {
-	hs := HalfSimulation{}
+func TestHighlights_Append(t *testing.T) {
+	hs := Highlights{}
 
 	hs = append(hs, Highlight{})
 
