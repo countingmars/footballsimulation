@@ -27,7 +27,7 @@ const (
 )
 
 type ZoneAbility struct {
-	Name       string
+	Name       Zone
 	Attributes map[string]*Attribute
 }
 
@@ -60,7 +60,7 @@ func (this ZoneAbility) Defence() int {
 func (this ZoneAbility) Offence() int {
 	return this.calculate(OffenceFactors)
 }
-func (this ZoneAbility) calculate(positionAttrFactors PositionAttrFactors) int {
+func (this ZoneAbility) calculate(positionAttrFactors ZoneAttrFactors) int {
 	var sum float32
 	for key, factor := range positionAttrFactors[this.Name].AttrFactors {
 		sum += this.calculateAttr(key, factor)

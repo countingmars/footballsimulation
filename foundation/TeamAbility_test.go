@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func newZoneAbility(zoneName string, attrName string, point int) ZoneAbility {
+func newZoneAbility(zoneName Zone, attrName string, point int) ZoneAbility {
 	return ZoneAbility{
 		Name: zoneName,
 		Attributes: map[string]*Attribute { attrName: &Attribute{attrName, point }},
@@ -12,8 +12,8 @@ func newZoneAbility(zoneName string, attrName string, point int) ZoneAbility {
 }
 func TestTeamAbility_Sum(t *testing.T) {
 	teamAbility := TeamAbility{}
-	teamAbility[DL] = newZoneAbility(DL, AB_ATTACK, 1)
-	teamAbility[DR] = newZoneAbility(DR, AB_DEFENCE, 1)
+	teamAbility[Zones.DL] = newZoneAbility(Zones.DL, AB_ATTACK, 1)
+	teamAbility[Zones.DR] = newZoneAbility(Zones.DR, AB_DEFENCE, 1)
 
 	actual := teamAbility.Sum()
 
@@ -24,9 +24,9 @@ func TestTeamAbility_Sum(t *testing.T) {
 
 func TestTeamAbility_Inspect(t *testing.T) {
 	teamAbility := TeamAbility{}
-	teamAbility[DL] = newZoneAbility(DL, AB_ATTACK, 3)
-	teamAbility[ML] = newZoneAbility(ML, AB_ATTACK, 6)
-	teamAbility[FL] = newZoneAbility(FL, AB_ATTACK, 9)
+	teamAbility[Zones.DL] = newZoneAbility(Zones.DL, AB_ATTACK, 3)
+	teamAbility[Zones.ML] = newZoneAbility(Zones.ML, AB_ATTACK, 6)
+	teamAbility[Zones.FL] = newZoneAbility(Zones.FL, AB_ATTACK, 9)
 
 	actual := teamAbility.Inspect()
 
@@ -46,7 +46,7 @@ func TestTeamAbility_Inspect(t *testing.T) {
 
 func TestTeamAbility_Possession(t *testing.T) {
 	teamAbility := TeamAbility{
-		MC: newZoneAbility(MC, AB_PASS, 10),
+		Zones.MC: newZoneAbility(Zones.MC, AB_PASS, 10),
 	}
 
 	actual := teamAbility.Possession()

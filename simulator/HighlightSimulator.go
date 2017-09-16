@@ -1,4 +1,4 @@
-package gamesimulator
+package simulator
 
 import (
 	. "github.com/countingmars/fb/foundation"

@@ -1,25 +1,18 @@
 package foundation
 
-import (
-)
 
-const (
-	GK = "GK"
-	DL = "DL"
-	DC = "DC"
-	DR = "DR"
-	ML = "ML"
-	MC = "MC"
-	MR = "MR"
-	FL = "FL"
-	FC = "FC"
-	FR = "FR"
-)
+type TeamAbility map[Zone]ZoneAbility
 
-type TeamAbility map[string]ZoneAbility
+func (this TeamAbility) Defence(position Zone) int {
+	return this[position].Defence()
+}
+
+func (this TeamAbility) Offence(position Zone) int {
+	return this[position].Offence()
+}
 
 
-func (this TeamAbility) effects(effects map[string]ZoneAbility) {
+func (this TeamAbility) effects(effects map[Zone]ZoneAbility) {
 	for name, effect := range effects {
 		this[name].Effect(effect)
 	}
@@ -33,9 +26,9 @@ func (this TeamAbility) Clone() TeamAbility {
 }
 func (this TeamAbility) Inspect() *TeamAbilityInspection {
 	lineAbility := []*Attribute{}
-	lineAbility = append(lineAbility, &Attribute{"D", this.avg(DL, DC, DR)})
-	lineAbility = append(lineAbility, &Attribute{"M", this.avg(ML, MC, MR)})
-	lineAbility = append(lineAbility, &Attribute{"F", this.avg(FL, FC, FR)})
+	lineAbility = append(lineAbility, &Attribute{"D", this.avg(Zones.DL, Zones.DC, Zones.DR)})
+	lineAbility = append(lineAbility, &Attribute{"M", this.avg(Zones.ML, Zones.MC, Zones.MR)})
+	lineAbility = append(lineAbility, &Attribute{"F", this.avg(Zones.FL, Zones.FC, Zones.FR)})
 
 	sortable(lineAbility).Sort()
 
@@ -55,7 +48,7 @@ func (this TeamAbility) Inspect() *TeamAbilityInspection {
 
 	return inspection
 }
-func (this TeamAbility) avg(zoneNames ... string) int {
+func (this TeamAbility) avg(zoneNames ... Zone) int {
 	sum := 0
 	for _, name := range zoneNames {
 		sum += this[name].Sum()

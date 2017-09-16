@@ -1,14 +1,14 @@
 package foundation
 
 
-type PositionAttrFactor struct {
+type ZoneAttrFactor struct {
 	Factor      float32
 	AttrFactors map[string]float32
 }
-type PositionAttrFactors map[string]PositionAttrFactor
+type ZoneAttrFactors map[Zone]ZoneAttrFactor
 
-var DefenceFactors = PositionAttrFactors{
-	DC: PositionAttrFactor{
+var DefenceFactors = ZoneAttrFactors{
+	Zones.DC: ZoneAttrFactor{
 		Factor: 3.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -27,7 +27,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 3.0,
 		},
 	},
-	DL: PositionAttrFactor{
+	Zones.DL: ZoneAttrFactor{
 		Factor: 2.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -46,7 +46,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	DR: PositionAttrFactor{
+	Zones.DR: ZoneAttrFactor{
 		Factor: 2.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -65,7 +65,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	MC: PositionAttrFactor{
+	Zones.MC: ZoneAttrFactor{
 		Factor: 2.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -84,7 +84,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	ML: PositionAttrFactor{
+	Zones.ML: ZoneAttrFactor{
 		Factor: 1.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -103,7 +103,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	MR: PositionAttrFactor{
+	Zones.MR: ZoneAttrFactor{
 		Factor: 1.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -122,7 +122,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	FC: PositionAttrFactor{
+	Zones.FC: ZoneAttrFactor{
 		Factor: 1.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -141,7 +141,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	FL: PositionAttrFactor{
+	Zones.FL: ZoneAttrFactor{
 		Factor: 1.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -160,7 +160,7 @@ var DefenceFactors = PositionAttrFactors{
 			AB_STRENGTH: 1.5,
 		},
 	},
-	FR: PositionAttrFactor{
+	Zones.FR: ZoneAttrFactor{
 		Factor: 1.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -180,8 +180,8 @@ var DefenceFactors = PositionAttrFactors{
 		},
 	},
 }
-var OffenceFactors = PositionAttrFactors{
-	DC: PositionAttrFactor{
+var OffenceFactors = ZoneAttrFactors{
+	Zones.DC: ZoneAttrFactor{
 		Factor: 1.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -198,7 +198,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 2.0,
 		},
 	},
-	DL: PositionAttrFactor{
+	Zones.DL: ZoneAttrFactor{
 		Factor: 1.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -216,7 +216,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 2.0,
 		},
 	},
-	DR: PositionAttrFactor{
+	Zones.DR: ZoneAttrFactor{
 		Factor: 1.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -234,7 +234,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 2.0,
 		},
 	},
-	MC: PositionAttrFactor{
+	Zones.MC: ZoneAttrFactor{
 		Factor: 2.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -253,7 +253,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 3.0,
 		},
 	},
-	ML: PositionAttrFactor{
+	Zones.ML: ZoneAttrFactor{
 		Factor: 2.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -272,7 +272,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 1.5,
 		},
 	},
-	MR: PositionAttrFactor{
+	Zones.MR: ZoneAttrFactor{
 		Factor: 2.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -291,7 +291,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 1.5,
 		},
 	},
-	FC: PositionAttrFactor{
+	Zones.FC: ZoneAttrFactor{
 		Factor: 3.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -310,7 +310,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 1.5,
 		},
 	},
-	FL: PositionAttrFactor{
+	Zones.FL: ZoneAttrFactor{
 		Factor: 2.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -329,7 +329,7 @@ var OffenceFactors = PositionAttrFactors{
 			AB_TEAMWORK: 1.5,
 		},
 	},
-	FR: PositionAttrFactor{
+	Zones.FR: ZoneAttrFactor{
 		Factor: 2.5,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -349,7 +349,7 @@ var OffenceFactors = PositionAttrFactors{
 		},
 	},
 }
-var ScoringFactor = PositionAttrFactor{
+var ScoringFactor = ZoneAttrFactor{
 	Factor: 1.0,
 	AttrFactors: map[string]float32 {
 		// technical factors
@@ -365,8 +365,8 @@ var ScoringFactor = PositionAttrFactor{
 }
 
 
-var PossessionFactors = map[string]PositionAttrFactor{
-	DC: PositionAttrFactor{
+var PossessionFactors = map[Zone]ZoneAttrFactor{
+	Zones.DC: ZoneAttrFactor{
 		Factor: 1.2,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -381,7 +381,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 1.2,
 		},
 	},
-	DL: PositionAttrFactor{
+	Zones.DL: ZoneAttrFactor{
 		Factor: 1.2,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -396,7 +396,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 1.5,
 		},
 	},
-	DR: PositionAttrFactor{
+	Zones.DR: ZoneAttrFactor{
 		Factor: 1.2,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -411,7 +411,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 1.5,
 		},
 	},
-	MC: PositionAttrFactor{
+	Zones.MC: ZoneAttrFactor{
 		Factor: 2.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -426,7 +426,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 1.2,
 		},
 	},
-	ML: PositionAttrFactor{
+	Zones.ML: ZoneAttrFactor{
 		Factor: 1.3,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -441,7 +441,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 2.0,
 		},
 	},
-	MR: PositionAttrFactor{
+	Zones.MR: ZoneAttrFactor{
 		Factor: 1.3,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -456,7 +456,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 2.0,
 		},
 	},
-	FC: PositionAttrFactor{
+	Zones.FC: ZoneAttrFactor{
 		Factor: 1.0,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -471,7 +471,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 1.5,
 		},
 	},
-	FL: PositionAttrFactor{
+	Zones.FL: ZoneAttrFactor{
 		Factor: 0.8,
 		AttrFactors: map[string]float32 {
 			// technical factors
@@ -486,7 +486,7 @@ var PossessionFactors = map[string]PositionAttrFactor{
 			AB_SPEED: 1.5,
 		},
 	},
-	FR: PositionAttrFactor{
+	Zones.FR: ZoneAttrFactor{
 		Factor: 0.8,
 		AttrFactors: map[string]float32 {
 			// technical factors

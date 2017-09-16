@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	. "github.com/countingmars/fb/foundation"
-	. "github.com/countingmars/fb/gamesimulator"
+	. "github.com/countingmars/fb/simulator"
 	. "github.com/countingmars/fb/commentor"
 	. "github.com/countingmars/fb/data"
 )
