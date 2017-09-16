@@ -7,30 +7,41 @@ import (
 )
 
 func Comment(sim *Simulation) string {
-	homeComment := commentTeam(sim.Home)
-	awayComment := commentTeam(sim.Away)
-	scoreComment := commentScore(sim)
-	firstHalfHighlightComment := commentHighlights(sim.First)
-	secondHalfHighlightComment := commentHighlights(sim.Second)
-	return fmt.Sprintf("%s vs %s\n%s\nfirst half\n%s\nsecond half\n%s",
-			homeComment,
-			awayComment,
-			scoreComment,
-			firstHalfHighlightComment,
-			secondHalfHighlightComment,
-		)
+	return fmt.Sprintf("%s vs %s, %s\n" +
+		"possession: %d vs %d\n" +
+		"first half: %s\n" +
+		"second half: %s\n",
+		commentTeam(sim.Home), commentTeam(sim.Away), commentResult(sim),
+		sim.Possession(Left), sim.Possession(Right),
+		commentHighlights(sim.First),
+		commentHighlights(sim.Second),
+	)
 }
-func commentHighlights(highlights []Highlight) string {
-	return fmt.Sprintf("%v", highlights)
+func commentHighlights(highlights Highlights) string {
+	var comments = []string{}
+	for _, hl := range highlights {
+		if hl.Type != "" {
+			comments = append(comments, string(hl.Side)+": "+hl.Message)
+		}
+	}
+	return fmt.Sprintf(
+		"possessions: %d vs %d\n"+
+		"shoots: %d/%d, %d/%d\n" +
+		"highlights: %v\n",
+		highlights.Possession(Left), highlights.Possession(Right),
+		highlights.Goals(Left), highlights.Shoots(Left) + highlights.Goals(Left),
+		highlights.Goals(Right), highlights.Shoots(Right) + highlights.Goals(Right),
+		comments,
+	)
 }
 func commentTeam(team *Team) string {
-	inspection := team.Ability.Inspect()
 	return fmt.Sprintf("%s (%d good %s)",
 		team.Name,
 		team.Ability.Sum(),
-		inspection.Style)
+		team.Ability.Inspect().Style,
+	)
 }
-func commentScore(sim *Simulation) string {
+func commentResult(sim *Simulation) string {
 	var result string
 	if sim.Draw() {
 		result = "D"
@@ -39,5 +50,9 @@ func commentScore(sim *Simulation) string {
 	} else {
 		result = "L"
 	}
-	return fmt.Sprintf("%s:%d-%d", result, sim.Goals().Home, sim.Goals().Away)
+	return fmt.Sprintf("%s:%d-%d",
+		result,
+		sim.Goals().Home,
+		sim.Goals().Away,
+	)
 }

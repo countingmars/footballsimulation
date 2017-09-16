@@ -3,6 +3,17 @@ package base
 
 type TeamAbility map[Zone]ZoneAbility
 
+func (this TeamAbility) Set(point int) {
+	for _, each := range this {
+		each.Set(point)
+	}
+}
+func (this ZoneAbility) Set(point int) {
+	for _, each := range this.Attributes {
+		each.Point = point
+	}
+}
+
 func (this TeamAbility) Scoring(zone Zone) int {
 	return this[zone].Scoring()
 }

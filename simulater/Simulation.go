@@ -47,3 +47,10 @@ func (this Simulation) Goals() Goals {
 		Away: this.First.Goals(Right) + this.Second.Goals(Left),
 	}
 }
+func (this Simulation) Possession(side Side) int {
+	if side == Left {
+		return this.First.Possession(Left) + this.Second.Possession(Right)
+	} else {
+		return this.First.Possession(Right) + this.Second.Possession(Left)
+	}
+}

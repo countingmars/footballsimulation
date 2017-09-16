@@ -14,6 +14,7 @@ func main() {
 	ManchesterUnited := model.Clone()
 	ManchesterUnited.Name = "Manchester United"
 	RealMadrid := model.Clone()
+	RealMadrid.Ability.Set(10)
 	RealMadrid.Name = "Real Madrid"
 
 	manuWinCount := 0

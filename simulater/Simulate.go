@@ -16,17 +16,21 @@ func Simulate(home *base.Team, away *base.Team) *Simulation {
 	simulation.Second = second
 	return simulation
 }
-
-func simulateHalf(left base.TeamAbility, right base.TeamAbility) Highlights {
-	situation := &Situation{
+func newSituation(left base.TeamAbility, right base.TeamAbility) *Situation {
+	return &Situation{
 		Timer: &Timer{},
 		Ball:  &Ball{},
+		Side: Left,
 		Left:  left,
 		Right: right,
 	}
+}
+func simulateHalf(left base.TeamAbility, right base.TeamAbility) Highlights {
+	var highlights = Highlights{}
+
+	situation := newSituation(left, right)
 	situation.Ball.KickOff()
 
-	var highlights = Highlights{}
 	for false == situation.Timer.Over() {
 		hl := simulateAttack(situation)
 		highlights = append(highlights, hl)
@@ -44,37 +48,39 @@ func simulateAttack(situation *Situation) Highlight {
 }
 
 func simulateHighlight(situation *Situation) Highlight {
+	possession := 1
 	for {
 		if false == simulateBuildup(situation) {
-			return Highlight{}
+			hl := Highlight{}
+			hl.Possession = possession
+			return hl
 		}
+		possession++
+		situation.Ball.Forward(situation.Side)
 
-		situation.Ball.Forward()
-
-		if situation.Ball.CanFinish() {
-			finish := simulateFinish(situation)
-			if finish.Scored() {
-				return simulateGoal()
-			} else {
-				return simulateShoot()
-			}
+		if situation.Ball.CanFinish(situation.Side) {
+			hl := simulateFinish(situation)
+			hl.Possession = possession
+			situation.Ball.KickOff()
+			return hl
 		}
 	}
 }
-func simulateBuildup(context *Situation) bool {
-	offence := context.Offender().Offence(context.Ball.Zone())
-	defence := context.Defender().Defence(context.Ball.Zone())
+func simulateBuildup(situation *Situation) bool {
+	offence := situation.Offender().Offence(situation.Zone())
+	defence := situation.Defender().Defence(situation.Zone())
 
 	return dice.Judge(offence, defence)
 }
-func simulateFinish(situation *Situation) Finish {
-	scoring := situation.Offender().Scoring(situation.Ball.Zone())
+
+func simulateFinish(situation *Situation) Highlight {
+	scoring := situation.Offender().Scoring(situation.Ball.Zone(situation.Side))
 	point := dice.Throw(scoring)
 
 	if point > scoring / 10 {
-		return Finish(point)
+		return simulateGoal()
 	} else {
-		return Finish(0)
+		return simulateShoot()
 	}
 }
 func simulateGoal() Highlight {

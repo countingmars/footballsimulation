@@ -26,3 +26,6 @@ func (this *Situation) Defender() base.TeamAbility {
 		return this.Left
 	}
 }
+func (this *Situation) Zone() base.Zone {
+	return this.Ball.Zone(this.Side)
+}

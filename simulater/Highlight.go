@@ -35,21 +35,38 @@ var ShootHighlights = []Highlight {
 }
 
 type Highlight struct {
-	Side Side
-	Time int
-	Type HighlightType
-	Message string
+	Time       int
+	Possession int
+	Side       Side
+	Type       HighlightType
+	Message    string
 }
 
 
 type Highlights []Highlight
 
-func (this Highlights) Goals(side Side) int {
-	goals := 0
-	for _, v := range this {
-		if v.Side == side && v.Type == Goal {
-			goals++
+func (this Highlights) Possession(side Side) int {
+	sum := 0
+	for _, hl := range this {
+		if hl.Side == side {
+			sum += hl.Possession
 		}
 	}
-	return goals
+	return sum
+}
+
+func (this Highlights) Goals(side Side) int {
+	return this.sum(Goal, side)
+}
+func (this Highlights) Shoots(side Side) int {
+	return this.sum(Shoot, side)
+}
+func (this Highlights) sum(hlType HighlightType, side Side) int {
+	sum := 0
+	for _, hl := range this {
+		if hl.Side == side && hl.Type == hlType {
+			sum++
+		}
+	}
+	return sum
 }

@@ -3,64 +3,61 @@ package simulater
 import (
 	"github.com/countingmars/fb/base"
 	"github.com/countingmars/fb/simulater/dice"
+	"fmt"
 )
 
 type Ball struct {
 	x int
 	y int
-	possessor Side
 }
 
-var field = map[Ball]base.Zone{
-	{0, 0, Left}:   base.Zones.DR,
-	{0, 1, Left}:   base.Zones.DC,
-	{0, 2, Left}:   base.Zones.DL,
-	{1, 0, Left}:   base.Zones.MR,
-	{1, 1, Left}:   base.Zones.MC,
-	{1, 2, Left}:   base.Zones.ML,
-	{2, 0, Left}:   base.Zones.FR,
-	{2, 1, Left}:   base.Zones.FC,
-	{2, 2, Left}:   base.Zones.FL,
-	{3, 0, Left}:   base.Zones.GK,
-	{3, 1, Left}:   base.Zones.GK,
-	{3, 2, Left}:   base.Zones.GK,
-	{-1, 0, Right}: base.Zones.GK,
-	{-1, 1, Right}: base.Zones.GK,
-	{-1, 2, Right}: base.Zones.GK,
-	{0, 0, Right}:  base.Zones.FR,
-	{0, 1, Right}:  base.Zones.FC,
-	{0, 2, Right}:  base.Zones.FL,
-	{1, 0, Right}:  base.Zones.MR,
-	{1, 1, Right}:  base.Zones.MC,
-	{1, 2, Right}:  base.Zones.ML,
-	{2, 0, Right}:  base.Zones.DR,
-	{2, 1, Right}:  base.Zones.DC,
-	{2, 2, Right}:  base.Zones.DL,
 
-}
 func (this *Ball) KickOff() {
 	this.x = 1
 	this.y = 1
-	this.possessor = Left
 }
-func (this *Ball) Forward() base.Zone {
+func (this *Ball) Forward(side Side) base.Zone {
 	this.y = dice.Throw(3)
-	if this.possessor == Left {
+	if side == Left {
 		this.x++
 	} else {
 		this.x--
 	}
-	return this.Zone()
+	return this.Zone(side)
 }
-func (this *Ball) Zone() base.Zone {
-	if this.possessor == Left {
-		return field[*this]
-	} else {
-		return field[*this]
-	}
+func (this *Ball) Zone(side Side) base.Zone {
+	key := fmt.Sprintf("%d%d%s", this.x, this.y, side)
+	return field[key]
 }
 
 
-func (this *Ball) CanFinish() bool {
-	return this.Zone() == base.Zones.GK
+func (this *Ball) CanFinish(side Side) bool {
+	return this.Zone(side) == base.Zones.GK
+}
+
+var field = map[string]base.Zone {
+	"00left":   base.Zones.DR,
+	"01left":   base.Zones.DC,
+	"02left":   base.Zones.DL,
+	"10left":   base.Zones.MR,
+	"11left":   base.Zones.MC,
+	"12left":   base.Zones.ML,
+	"20left":   base.Zones.FR,
+	"21left":   base.Zones.FC,
+	"22left":   base.Zones.FL,
+	"30left":   base.Zones.GK,
+	"31left":   base.Zones.GK,
+	"32left":   base.Zones.GK,
+	"-10right": base.Zones.GK,
+	"-11right": base.Zones.GK,
+	"-12right": base.Zones.GK,
+	"00right":  base.Zones.FR,
+	"01right":  base.Zones.FC,
+	"02right":  base.Zones.FL,
+	"10right":  base.Zones.MR,
+	"11right":  base.Zones.MC,
+	"12right":  base.Zones.ML,
+	"20right":  base.Zones.DR,
+	"21right":  base.Zones.DC,
+	"22right":  base.Zones.DL,
 }

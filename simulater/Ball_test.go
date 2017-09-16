@@ -5,6 +5,14 @@ import (
 	"github.com/countingmars/fb/base"
 )
 
+func TestBall_Zone(t *testing.T) {
+	ball := Ball{}
+	ball.KickOff()
+
+	if base.Zones.MC != ball.Zone(Left) {
+		t.Error("initial ball position should be MC, but ", ball.Zone(Left))
+	}
+}
 func TestBall_PositionForLeft(t *testing.T) {
 	ball := Ball{}
 
@@ -14,13 +22,13 @@ func TestBall_PositionForLeft(t *testing.T) {
 
 func testPositionFor(t *testing.T, ball Ball, side Side) {
 	ball.KickOff()
-	ballPositionShouldBe(ball.Zone(), "M", t)
+	ballPositionShouldBe(ball.Zone(side), "M", t)
 
-	ball.Forward()
-	ballPositionShouldBe(ball.Zone(), "F", t)
+	ball.Forward(side)
+	ballPositionShouldBe(ball.Zone(side), "F", t)
 
-	ball.Forward()
-	if base.Zones.GK != ball.Zone() {
+	ball.Forward(side)
+	if base.Zones.GK != ball.Zone(side) {
 		t.Error("chance should be returned as true")
 	}
 }
