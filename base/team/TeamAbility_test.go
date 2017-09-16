@@ -1,19 +1,23 @@
-package base
+package team
 
 import (
 	"testing"
+	"github.com/countingmars/fb/base/attr"
+	"github.com/countingmars/fb/base/zone"
 )
 
-func newZoneAbility(zoneName Zone, attrName string, point int) ZoneAbility {
-	return ZoneAbility{
+func newZoneAbility(zoneName zone.Name, attrName attr.Name, point int) zone.Ability {
+	return zone.Ability{
 		Name: zoneName,
-		Attributes: map[string]*Attribute { attrName: &Attribute{attrName, point }},
+		Attributes: map[attr.Name]*attr.Attribute {
+			attrName: &attr.Attribute{attrName, point },
+		},
 	}
 }
 func TestTeamAbility_Sum(t *testing.T) {
-	teamAbility := TeamAbility{}
-	teamAbility[Zones.DL] = newZoneAbility(Zones.DL, AB_ATTACK, 1)
-	teamAbility[Zones.DR] = newZoneAbility(Zones.DR, AB_DEFENCE, 1)
+	teamAbility := Ability{}
+	teamAbility[zone.Names.DL] = newZoneAbility(zone.Names.DL, attr.Names.Attack, 1)
+	teamAbility[zone.Names.DR] = newZoneAbility(zone.Names.DR, attr.Names.Defence, 1)
 
 	actual := teamAbility.Sum()
 
@@ -23,10 +27,10 @@ func TestTeamAbility_Sum(t *testing.T) {
 }
 
 func TestTeamAbility_Inspect(t *testing.T) {
-	teamAbility := TeamAbility{}
-	teamAbility[Zones.DL] = newZoneAbility(Zones.DL, AB_ATTACK, 3)
-	teamAbility[Zones.ML] = newZoneAbility(Zones.ML, AB_ATTACK, 6)
-	teamAbility[Zones.FL] = newZoneAbility(Zones.FL, AB_ATTACK, 9)
+	teamAbility := Ability{}
+	teamAbility[zone.Names.DL] = newZoneAbility(zone.Names.DL, attr.Names.Attack, 3)
+	teamAbility[zone.Names.ML] = newZoneAbility(zone.Names.ML, attr.Names.Attack, 6)
+	teamAbility[zone.Names.FL] = newZoneAbility(zone.Names.FL, attr.Names.Attack, 9)
 
 	actual := teamAbility.Inspect()
 
@@ -45,8 +49,8 @@ func TestTeamAbility_Inspect(t *testing.T) {
 }
 
 func TestTeamAbility_Possession(t *testing.T) {
-	teamAbility := TeamAbility{
-		Zones.MC: newZoneAbility(Zones.MC, AB_PASS, 10),
+	teamAbility := Ability{
+		zone.Names.MC: newZoneAbility(zone.Names.MC, attr.Names.Pass, 10),
 	}
 
 	actual := teamAbility.Possession()

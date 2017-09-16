@@ -1,11 +1,11 @@
 package simulater
 
 import (
-	"github.com/countingmars/fb/base"
 	"github.com/countingmars/fb/simulater/dice"
+	"github.com/countingmars/fb/base/team"
 )
 
-func Simulate(home *base.Team, away *base.Team) *Simulation {
+func Simulate(home *team.Team, away *team.Team) *Simulation {
 	first := simulateHalf(home.Ability, away.Ability)
 	second := simulateHalf(away.Ability, home.Ability)
 
@@ -16,7 +16,7 @@ func Simulate(home *base.Team, away *base.Team) *Simulation {
 	simulation.Second = second
 	return simulation
 }
-func newSituation(left base.TeamAbility, right base.TeamAbility) *Situation {
+func newSituation(left team.Ability, right team.Ability) *Situation {
 	return &Situation{
 		Timer: &Timer{},
 		Ball:  &Ball{},
@@ -25,7 +25,7 @@ func newSituation(left base.TeamAbility, right base.TeamAbility) *Situation {
 		Right: right,
 	}
 }
-func simulateHalf(left base.TeamAbility, right base.TeamAbility) Highlights {
+func simulateHalf(left team.Ability, right team.Ability) Highlights {
 	var highlights = Highlights{}
 
 	situation := newSituation(left, right)

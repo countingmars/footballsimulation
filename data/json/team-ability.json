@@ -3,11 +3,11 @@
     "Name": "DL",
     "Attributes": {
       "Speed": {
-        "Name": "Speed",
+        "Name": "speed",
         "Point": 19
       },
       "Health": {
-        "Name": "Health",
+        "Name": "health",
         "Point": 19
       }
     }

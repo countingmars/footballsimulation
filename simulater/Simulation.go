@@ -1,10 +1,12 @@
 package simulater
 
-import "github.com/countingmars/fb/base"
+import (
+	"github.com/countingmars/fb/base/team"
+)
 
 type Simulation struct {
-	Home   *base.Team
-	Away   *base.Team
+	Home   *team.Team
+	Away   *team.Team
 	First  Highlights
 	Second Highlights
 }
@@ -29,7 +31,7 @@ func (this Simulation) Lose() bool {
 func (this Simulation) Draw() bool {
 	return this.Goals().Draw()
 }
-func (this Simulation) Winner() (winner *base.Team, ok bool) {
+func (this Simulation) Winner() (winner *team.Team, ok bool) {
 	if this.Goals().Home > this.Goals().Away {
 		winner = this.Home
 		ok = true

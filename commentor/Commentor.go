@@ -2,22 +2,22 @@ package commentor
 
 import (
 	"fmt"
-	. "github.com/countingmars/fb/base"
-	. "github.com/countingmars/fb/simulater"
+	"github.com/countingmars/fb/simulater"
+	"github.com/countingmars/fb/base/team"
 )
 
-func Comment(sim *Simulation) string {
+func Comment(sim *simulater.Simulation) string {
 	return fmt.Sprintf("%s vs %s, %s\n" +
 		"possession: %d vs %d\n" +
 		"first half: %s\n" +
 		"second half: %s\n",
 		commentTeam(sim.Home), commentTeam(sim.Away), commentResult(sim),
-		sim.Possession(Left), sim.Possession(Right),
+		sim.Possession(simulater.Left), sim.Possession(simulater.Right),
 		commentHighlights(sim.First),
 		commentHighlights(sim.Second),
 	)
 }
-func commentHighlights(highlights Highlights) string {
+func commentHighlights(highlights simulater.Highlights) string {
 	var comments = []string{}
 	for _, hl := range highlights {
 		if hl.Type != "" {
@@ -28,20 +28,20 @@ func commentHighlights(highlights Highlights) string {
 		"possessions: %d vs %d\n"+
 		"shoots: %d/%d, %d/%d\n" +
 		"highlights: %v\n",
-		highlights.Possession(Left), highlights.Possession(Right),
-		highlights.Goals(Left), highlights.Shoots(Left) + highlights.Goals(Left),
-		highlights.Goals(Right), highlights.Shoots(Right) + highlights.Goals(Right),
+		highlights.Possession(simulater.Left), highlights.Possession(simulater.Right),
+		highlights.Goals(simulater.Left), highlights.Shoots(simulater.Left) + highlights.Goals(simulater.Left),
+		highlights.Goals(simulater.Right), highlights.Shoots(simulater.Right) + highlights.Goals(simulater.Right),
 		comments,
 	)
 }
-func commentTeam(team *Team) string {
+func commentTeam(team *team.Team) string {
 	return fmt.Sprintf("%s (%d good %s)",
 		team.Name,
 		team.Ability.Sum(),
 		team.Ability.Inspect().Style,
 	)
 }
-func commentResult(sim *Simulation) string {
+func commentResult(sim *simulater.Simulation) string {
 	var result string
 	if sim.Draw() {
 		result = "D"

@@ -2,14 +2,13 @@ package data
 
 import (
 	"encoding/json"
-	"github.com/countingmars/fb/base"
+	"github.com/countingmars/fb/base/team"
 	"github.com/countingmars/fb/misc"
 	"reflect"
-
 )
 
-func LoadTeam(filename string) *base.Team {
-	var team base.Team
+func LoadTeam(filename string) *team.Team {
+	var team team.Team
 	var bytes = misc.LoadFile(filename)
 	json.Unmarshal(bytes, &team)
 	return &team

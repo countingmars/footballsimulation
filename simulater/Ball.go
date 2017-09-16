@@ -1,9 +1,9 @@
 package simulater
 
 import (
-	"github.com/countingmars/fb/base"
-	"github.com/countingmars/fb/simulater/dice"
 	"fmt"
+	"github.com/countingmars/fb/simulater/dice"
+	"github.com/countingmars/fb/base/zone"
 )
 
 type Ball struct {
@@ -16,7 +16,7 @@ func (this *Ball) KickOff() {
 	this.x = 1
 	this.y = 1
 }
-func (this *Ball) Forward(side Side) base.Zone {
+func (this *Ball) Forward(side Side) zone.Name {
 	this.y = dice.Throw(3)
 	if side == Left {
 		this.x++
@@ -25,39 +25,39 @@ func (this *Ball) Forward(side Side) base.Zone {
 	}
 	return this.Zone(side)
 }
-func (this *Ball) Zone(side Side) base.Zone {
+func (this *Ball) Zone(side Side) zone.Name {
 	key := fmt.Sprintf("%d%d%s", this.x, this.y, side)
 	return field[key]
 }
 
 
 func (this *Ball) CanFinish(side Side) bool {
-	return this.Zone(side) == base.Zones.GK
+	return this.Zone(side) == zone.Names.GK
 }
 
-var field = map[string]base.Zone {
-	"00left":   base.Zones.DR,
-	"01left":   base.Zones.DC,
-	"02left":   base.Zones.DL,
-	"10left":   base.Zones.MR,
-	"11left":   base.Zones.MC,
-	"12left":   base.Zones.ML,
-	"20left":   base.Zones.FR,
-	"21left":   base.Zones.FC,
-	"22left":   base.Zones.FL,
-	"30left":   base.Zones.GK,
-	"31left":   base.Zones.GK,
-	"32left":   base.Zones.GK,
-	"-10right": base.Zones.GK,
-	"-11right": base.Zones.GK,
-	"-12right": base.Zones.GK,
-	"00right":  base.Zones.FR,
-	"01right":  base.Zones.FC,
-	"02right":  base.Zones.FL,
-	"10right":  base.Zones.MR,
-	"11right":  base.Zones.MC,
-	"12right":  base.Zones.ML,
-	"20right":  base.Zones.DR,
-	"21right":  base.Zones.DC,
-	"22right":  base.Zones.DL,
+var field = map[string]zone.Name{
+	"00left":   zone.Names.DR,
+	"01left":   zone.Names.DC,
+	"02left":   zone.Names.DL,
+	"10left":   zone.Names.MR,
+	"11left":   zone.Names.MC,
+	"12left":   zone.Names.ML,
+	"20left":   zone.Names.FR,
+	"21left":   zone.Names.FC,
+	"22left":   zone.Names.FL,
+	"30left":   zone.Names.GK,
+	"31left":   zone.Names.GK,
+	"32left":   zone.Names.GK,
+	"-10right": zone.Names.GK,
+	"-11right": zone.Names.GK,
+	"-12right": zone.Names.GK,
+	"00right":  zone.Names.FR,
+	"01right":  zone.Names.FC,
+	"02right":  zone.Names.FL,
+	"10right":  zone.Names.MR,
+	"11right":  zone.Names.MC,
+	"12right":  zone.Names.ML,
+	"20right":  zone.Names.DR,
+	"21right":  zone.Names.DC,
+	"22right":  zone.Names.DL,
 }

@@ -1,8 +1,8 @@
-package base
+package team
 
 type Team struct {
 	Name    string
-	Ability TeamAbility
+	Ability Ability
 }
 
 func (this* Team) Equals(other *Team) bool {

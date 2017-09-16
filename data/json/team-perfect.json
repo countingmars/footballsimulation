@@ -4,56 +4,56 @@
     "GK": {
       "Name": "GK",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -61,56 +61,56 @@
     "DL": {
       "Name": "DL",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -118,56 +118,56 @@
     "DR": {
       "Name": "DR",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -175,56 +175,56 @@
     "DC": {
       "Name": "DC",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -232,56 +232,56 @@
     "ML": {
       "Name": "ML",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -289,56 +289,56 @@
     "MR":  {
       "Name": "MR",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -346,56 +346,56 @@
     "MC":  {
       "Name": "MC",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -403,56 +403,56 @@
     "FL":  {
       "Name": "FL",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -460,56 +460,56 @@
     "FR":  {
       "Name": "FR",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }
@@ -517,56 +517,56 @@
     "FC":  {
       "Name": "FC",
       "Attributes": {
-        "Speed": {
-          "Name": "Speed",
+        "speed": {
+          "Name": "speed",
           "Point": 20
         },
-        "Health": {
-          "Name": "Health",
+        "health": {
+          "Name": "health",
           "Point": 20
         },
-        "Workrate": {
-          "Name": "Workrate",
+        "workrate": {
+          "Name": "workrate",
           "Point": 20
         },
-        "Dribble": {
-          "Name": "Dribble",
+        "dribble": {
+          "Name": "dribble",
           "Point": 20
         },
-        "Pass": {
-          "Name": "Pass",
+        "pass": {
+          "Name": "pass",
           "Point": 20
         },
-        "CrossPass": {
-          "Name": "CrossPass",
+        "crosspass": {
+          "Name": "crosspass",
           "Point": 20
         },
-        "Shoot": {
-          "Name": "Shoot",
+        "shoot": {
+          "Name": "shoot",
           "Point": 20
         },
-        "LongShoot": {
-          "Name": "LongShoot",
+        "longshoot": {
+          "Name": "longshoot",
           "Point": 20
         },
-        "Teamwork": {
-          "Name": "Teamwork",
+        "teamwork": {
+          "Name": "teamwork",
           "Point": 20
         },
-        "Decision": {
-          "Name": "Decision",
+        "decision": {
+          "Name": "decision",
           "Point": 20
         },
-        "Defence": {
-          "Name": "Defence",
+        "defence": {
+          "Name": "defence",
           "Point": 20
         },
-        "Attack": {
-          "Name": "Attack",
+        "attack": {
+          "Name": "attack",
           "Point": 20
         },
-        "Strategy": {
-          "Name": "Strategy",
+        "strategy": {
+          "Name": "strategy",
           "Point": 20
         }
       }

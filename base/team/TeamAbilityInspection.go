@@ -1,4 +1,6 @@
-package base
+package team
+
+import "github.com/countingmars/fb/base/attr"
 
 const (
 	TAI_BALANCE = "balance"
@@ -9,8 +11,8 @@ const (
 	TAI_COUNTER = "counter"
 )
 type TeamAbilityInspection struct {
-	Strength *Attribute
-	Weakness *Attribute
+	Strength *attr.Attribute
+	Weakness *attr.Attribute
 	Style string
 }
 
