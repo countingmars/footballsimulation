@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/countingmars/fb/simulater"
 	"github.com/countingmars/fb/base/team"
+	"github.com/countingmars/fb/base/zone"
 )
 
 func Comment(sim *simulater.Simulation) string {
@@ -34,11 +35,10 @@ func commentHighlights(highlights simulater.Highlights) string {
 		comments,
 	)
 }
-func commentTeam(team *team.Team) string {
-	return fmt.Sprintf("%s (%d good %s)",
-		team.Name,
-		team.Ability.Sum(),
-		team.Ability.Inspect().Style,
+func commentTeam(aTeam *team.Team) string {
+	return fmt.Sprintf("%s (%d)",
+		aTeam.Name,
+		zone.ZonesFrom(aTeam.Formation).Sum(),
 	)
 }
 func commentResult(sim *simulater.Simulation) string {

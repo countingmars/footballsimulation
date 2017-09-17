@@ -4,18 +4,20 @@ import (
 	"fmt"
 	"github.com/countingmars/fb/simulater"
 	"github.com/countingmars/fb/commentor"
-	"github.com/countingmars/fb/data"
+	"github.com/countingmars/fb/base/team"
+	"github.com/countingmars/fb/base/formation"
 )
 
 func main() {
 	fmt.Println("fb started")
 
-	model := data.LoadTeam("/json/team-perfect.json")
-	ManchesterUnited := model.Clone()
+	ManchesterUnited := &team.Team{}
 	ManchesterUnited.Name = "Manchester United"
-	RealMadrid := model.Clone()
-	RealMadrid.Ability.Set(10)
+	ManchesterUnited.Formation = formation.Test442()
+
+	RealMadrid := ManchesterUnited.Clone()
 	RealMadrid.Name = "Real Madrid"
+	RealMadrid.Formation.Set(10)
 
 	manuWinCount := 0
 	realWinCount := 0
@@ -34,3 +36,5 @@ func main() {
 	fmt.Println(manuWinCount, " vs ", realWinCount, " draw : ", drawCount)
 	fmt.Println("fb completed")
 }
+
+

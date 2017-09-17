@@ -3,11 +3,15 @@ package simulater
 import (
 	"github.com/countingmars/fb/simulater/dice"
 	"github.com/countingmars/fb/base/team"
+	"github.com/countingmars/fb/base/zone"
 )
 
 func Simulate(home *team.Team, away *team.Team) *Simulation {
-	first := simulateHalf(home.Ability, away.Ability)
-	second := simulateHalf(away.Ability, home.Ability)
+	homeZones := zone.ZonesFrom(home.Formation)
+	awayZones := zone.ZonesFrom(away.Formation)
+
+	first := simulateHalf(homeZones, awayZones)
+	second := simulateHalf(awayZones, homeZones)
 
 	simulation := &Simulation{}
 	simulation.Home = home
@@ -16,7 +20,7 @@ func Simulate(home *team.Team, away *team.Team) *Simulation {
 	simulation.Second = second
 	return simulation
 }
-func newSituation(left team.Ability, right team.Ability) *Situation {
+func newSituation(left zone.Zones, right zone.Zones) *Situation {
 	return &Situation{
 		Timer: &Timer{},
 		Ball:  &Ball{},
@@ -25,7 +29,7 @@ func newSituation(left team.Ability, right team.Ability) *Situation {
 		Right: right,
 	}
 }
-func simulateHalf(left team.Ability, right team.Ability) Highlights {
+func simulateHalf(left zone.Zones, right zone.Zones) Highlights {
 	var highlights = Highlights{}
 
 	situation := newSituation(left, right)
@@ -67,14 +71,14 @@ func simulateHighlight(situation *Situation) Highlight {
 	}
 }
 func simulateBuildup(situation *Situation) bool {
-	offence := situation.Offender().Offence(situation.Zone())
-	defence := situation.Defender().Defence(situation.Zone())
+	offence := situation.Offender()[situation.ZoneName()].Offence()
+	defence := situation.Defender()[situation.ZoneName()].Defence()
 
 	return dice.Judge(offence, defence)
 }
 
 func simulateFinish(situation *Situation) Highlight {
-	scoring := situation.Offender().Scoring(situation.Ball.Zone(situation.Side))
+	scoring := situation.Offender()[situation.ZoneName()].Scoring()
 	point := dice.Throw(scoring)
 
 	if point > scoring / 10 {

@@ -1,0 +1,112 @@
+{
+  "name": "player-name",
+  "age": 21,
+  "country": {
+    "code": "DE",
+    "name": "Germany"
+  },
+  "ability": {
+    "anticipation": {
+      "name": "anticipation",
+      "point": 20
+    },
+    "attack": {
+      "name": "attack",
+      "point": 20
+    },
+    "creative": {
+      "name": "creative",
+      "point": 20
+    },
+    "cross": {
+      "name": "cross",
+      "point": 20
+    },
+    "decision": {
+      "name": "decision",
+      "point": 20
+    },
+    "defence": {
+      "name": "defence",
+      "point": 20
+    },
+    "dribble": {
+      "name": "dribble",
+      "point": 20
+    },
+    "finish": {
+      "name": "finish",
+      "point": 20
+    },
+    "gk": {
+      "name": "gk",
+      "point": 20
+    },
+    "heading": {
+      "name": "heading",
+      "point": 20
+    },
+    "health": {
+      "name": "health",
+      "point": 20
+    },
+    "longshoot": {
+      "name": "longshoot",
+      "point": 20
+    },
+    "mark": {
+      "name": "mark",
+      "point": 20
+    },
+    "offtheball": {
+      "name": "offtheball",
+      "point": 20
+    },
+    "pass": {
+      "name": "pass",
+      "point": 20
+    },
+    "positioning": {
+      "name": "positioning",
+      "point": 20
+    },
+    "shoot": {
+      "name": "shoot",
+      "point": 20
+    },
+    "speed": {
+      "name": "speed",
+      "point": 20
+    },
+    "strategy": {
+      "name": "strategy",
+      "point": 20
+    },
+    "strength": {
+      "name": "strength",
+      "point": 20
+    },
+    "tackle": {
+      "name": "tackle",
+      "point": 20
+    },
+    "teamwork": {
+      "name": "teamwork",
+      "point": 20
+    },
+    "workrate": {
+      "name": "workrate",
+      "point": 20
+    }
+  },
+  "positions": [
+    {
+      "name": "DC",
+      "point": 0
+    },
+    {
+      "name": "DL",
+      "point": 0
+    }
+  ]
+}

@@ -2,29 +2,30 @@ package simulater
 
 import (
 	"testing"
-	"github.com/countingmars/fb/data"
+	"github.com/countingmars/fb/base/formation"
+	"github.com/countingmars/fb/base/zone"
 )
 
 func TestSimulate_simulateBuildup(t *testing.T) {
-	home := data.LoadTeam("/json/team-perfect.json")
+	home := zone.ZonesFrom(formation.Test442())
 	away := home.Clone()
-	away.Ability.Set(0)
+	away.Set(0)
 
 	for i := 0; i < 100; i++ {
-		if false == simulateBuildup(newSituation(home.Ability, away.Ability)) {
+		if false == simulateBuildup(newSituation(home, away)) {
 			t.Error("away ability is 0 so should always win")
 		}
 	}
 }
 
 func TestSimulate_simulateAttack(t *testing.T) {
-	home := data.LoadTeam("/json/team-perfect.json")
+	home := zone.ZonesFrom(formation.Test442())
 	away := home.Clone()
-	away.Ability.Set(0)
+	away.Set(0)
 
 	hls := Highlights{}
 	for i := 0; i < 5; i++ {
-		hl := simulateAttack(newSituation(home.Ability, away.Ability))
+		hl := simulateAttack(newSituation(home, away))
 		hls = append(hls, hl)
 	}
 

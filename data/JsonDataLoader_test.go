@@ -2,40 +2,23 @@ package data
 
 import (
 	"testing"
-	"github.com/countingmars/fb/base/attr"
-	"github.com/countingmars/fb/base/team"
-	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/base/stats"
+	"github.com/countingmars/fb/base/player"
 )
 
-func TestLoadAbility(t *testing.T) {
-	actual := &attr.Attribute{}
-	LoadJsonFile("/json/ability.json", actual)
+func TestLoadJsonFile_attribute(t *testing.T) {
+	actual := &stats.Attribute{}
+	LoadJsonFile("/json/attribute.json", actual)
 
 	if actual.Point != 19 {
 		t.Error("speed should be 19, but ", actual.Point)
 	}
 }
-func TestLoadZoneAbility(t *testing.T) {
-	actual := &zone.Ability{}
-	LoadJsonFile("/json/zone-ability.json", actual)
+func TestLoadJsonFile_player(t *testing.T) {
+	actual := player.Player{}
+	LoadJsonFile("/json/player-perfect.json", &actual)
 
-	if actual.Sum() != 38 {
-		t.Error("speed should be 19, but ", actual.Sum())
-	}
-}
-func TestLoadTeamAbility(t *testing.T) {
-	actual := &team.Ability{}
-	LoadJsonFile("/json/team-ability.json", actual)
-
-	if actual.Sum() != 38 {
-		t.Error("speed should be 38, but ", actual.Sum())
-	}
-}
-func TestLoadTeam(t *testing.T) {
-	actual := &team.Team{}
-	LoadJsonFile("/json/team-perfect.json", actual)
-
-	if 2600 != actual.Ability.Sum() {
-		t.Error("This team's power should be 2600, but ", actual.Ability.Sum())
+	if actual.Ability.Sum() != 460 {
+		t.Error("sum should be 460, but ", actual.Ability.Sum())
 	}
 }

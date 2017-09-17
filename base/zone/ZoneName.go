@@ -1,27 +1,23 @@
 package zone
 
-import "strings"
+import (
+	"github.com/countingmars/fb/base"
+)
 
-type Name string
-
-func (this Name) In(line string) bool {
-	return strings.Contains(string(this), line)
-}
-
-var Names = struct{
+var Names = struct {
 	DR, DL, DC,
 	MR, ML, MC,
 	FR, FL, FC,
-	GK Name
-} {
-	GK: Name("GK"),
-	DR: Name("DR"),
-	DL: Name("DL"),
-	DC: Name("DC"),
-	MR: Name("MR"),
-	ML: Name("ML"),
-	MC: Name("MC"),
-	FR: Name("FR"),
-	FL: Name("FL"),
-	FC: Name("FC"),
+	GK base.Name
+}{
+	GK: base.Name("GK"),
+	DR: base.Name("DR"),
+	DL: base.Name("DL"),
+	DC: base.Name("DC"),
+	MR: base.Name("MR"),
+	ML: base.Name("ML"),
+	MC: base.Name("MC"),
+	FR: base.Name("FR"),
+	FL: base.Name("FL"),
+	FC: base.Name("FC"),
 }

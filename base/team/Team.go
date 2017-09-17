@@ -1,8 +1,10 @@
 package team
 
+import "github.com/countingmars/fb/base/formation"
+
 type Team struct {
 	Name    string
-	Ability Ability
+	Formation formation.Formation
 }
 
 func (this* Team) Equals(other *Team) bool {
@@ -12,6 +14,6 @@ func (this* Team) Equals(other *Team) bool {
 func (this *Team) Clone() *Team {
 	return &Team{
 		Name: this.Name,
-		Ability: this.Ability.Clone(),
+		Formation: this.Formation.Clone(),
 	}
 }

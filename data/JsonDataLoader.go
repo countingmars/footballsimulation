@@ -2,15 +2,15 @@ package data
 
 import (
 	"encoding/json"
-	"github.com/countingmars/fb/base/team"
 	"reflect"
+	"github.com/countingmars/fb/base/player"
 )
 
-func LoadTeam(filename string) *team.Team {
-	var team team.Team
+func LoadPlayer(filename string) *player.Player {
+	var player player.Player
 	var bytes = LoadFile(filename)
-	json.Unmarshal(bytes, &team)
-	return &team
+	json.Unmarshal(bytes, &player)
+	return &player
 }
 func LoadJsonFile(filename string, destin interface{}) {
 	if reflect.ValueOf(destin).Kind() != reflect.Ptr {

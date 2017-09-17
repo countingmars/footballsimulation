@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/countingmars/fb/simulater/dice"
 	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/base"
 )
 
 type Ball struct {
@@ -16,26 +17,26 @@ func (this *Ball) KickOff() {
 	this.x = 1
 	this.y = 1
 }
-func (this *Ball) Forward(side Side) zone.Name {
+func (this *Ball) Forward(side Side) base.Name {
 	this.y = dice.Throw(3)
 	if side == Left {
 		this.x++
 	} else {
 		this.x--
 	}
-	return this.Zone(side)
+	return this.ZoneName(side)
 }
-func (this *Ball) Zone(side Side) zone.Name {
+func (this *Ball) ZoneName(side Side) base.Name {
 	key := fmt.Sprintf("%d%d%s", this.x, this.y, side)
 	return field[key]
 }
 
 
 func (this *Ball) CanFinish(side Side) bool {
-	return this.Zone(side) == zone.Names.GK
+	return this.ZoneName(side) == zone.Names.GK
 }
 
-var field = map[string]zone.Name{
+var field = map[string]base.Name{
 	"00left":   zone.Names.DR,
 	"01left":   zone.Names.DC,
 	"02left":   zone.Names.DL,

@@ -12,6 +12,6 @@ var Countries = struct{
 	DE : Country{"DE", "Germany"},
 }
 type Country struct {
-	Code string
-	Name string
+	Code string `json:"code"`
+	Name string `json:"name"`
 }
