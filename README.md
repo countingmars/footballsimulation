@@ -2,7 +2,7 @@
 
 A football simulation engine in golang.
 
-Terms in the project.
+Terms in this project.
 - Formation : A Set of 11 Roles. 
 - Role : A Position + a Player in a Formation.
 - Player : A Player who has an Ability and skilled positions.
