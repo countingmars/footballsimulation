@@ -2,10 +2,23 @@ package zone
 
 import (
 	"github.com/countingmars/fb/base/formation"
-	"github.com/countingmars/fb/base"
+	"github.com/countingmars/fb/base/name"
 )
 
-type Zones map[base.Name]*Zone
+type Zones map[name.Name]*Zone
+
+
+func ZonesFrom(aFormation formation.Formation) Zones {
+	zones := Zones{}
+	for _, each := range aFormation {
+		zoneNames := resolveZoneNames(each.Position)
+		for _, zoneName := range zoneNames {
+			zones.Get(zoneName).Add(each)
+		}
+	}
+	return zones
+}
+
 
 func (this Zones) Set(point int) {
 	for _, zone := range this {
@@ -13,7 +26,7 @@ func (this Zones) Set(point int) {
 	}
 }
 
-func (this Zones) Get(name base.Name) *Zone {
+func (this Zones) Get(name name.Name) *Zone {
 	zone, ok := this[name]
 	if ok == false {
 		zone = &Zone{

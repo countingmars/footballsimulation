@@ -33,7 +33,7 @@ func simulateHalf(left zone.Zones, right zone.Zones) Highlights {
 	var highlights = Highlights{}
 
 	situation := newSituation(left, right)
-	situation.Ball.KickOff()
+	situation.KickOff()
 
 	for false == situation.Timer.Over() {
 		hl := simulateAttack(situation)
@@ -43,6 +43,9 @@ func simulateHalf(left zone.Zones, right zone.Zones) Highlights {
 		situation.Timer.Go()
 	}
 	return highlights
+}
+func (this *Situation) KickOff() {
+	this.Ball.KickOff()
 }
 func simulateAttack(situation *Situation) Highlight {
 	hl := simulateHighlight(situation)

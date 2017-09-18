@@ -2,15 +2,14 @@ package simulater
 
 import (
 	"testing"
-	"github.com/countingmars/fb/base/zone"
-	"github.com/countingmars/fb/base"
+	"github.com/countingmars/fb/base/name"
 )
 
 func TestBall_Zone(t *testing.T) {
 	ball := Ball{}
 	ball.KickOff()
 
-	if zone.Names.MC != ball.ZoneName(Left) {
+	if name.MC != ball.ZoneName(Left) {
 		t.Error("initial ball position should be MC, but ", ball.ZoneName(Left))
 	}
 }
@@ -29,12 +28,12 @@ func testPositionFor(t *testing.T, ball Ball, side Side) {
 	ballPositionShouldBe(ball.ZoneName(side), "F", t)
 
 	ball.Forward(side)
-	if zone.Names.GK != ball.ZoneName(side) {
+	if name.GK != ball.ZoneName(side) {
 		t.Error("chance should be returned as true")
 	}
 }
 
-func ballPositionShouldBe(zone base.Name, line string, t *testing.T) {
+func ballPositionShouldBe(zone name.Name, line string, t *testing.T) {
 	if false == zone.In(line) {
 		t.Error("ball position expected " + line + ", but ", zone)
 	}

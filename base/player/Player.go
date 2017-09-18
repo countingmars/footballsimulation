@@ -4,6 +4,7 @@ import (
 	"github.com/countingmars/fb/base"
 	"github.com/countingmars/fb/base/position"
 	"github.com/countingmars/fb/base/stats"
+	"encoding/json"
 )
 
 type Player struct {
@@ -22,4 +23,8 @@ func (this *Player) Clone() *Player {
 		Ability: this.Ability.Clone(),
 		Positions: this.Positions.Clone(),
 	}
+}
+func (this *Player) Json() string {
+	out, _ := json.Marshal(this)
+	return string(out)
 }

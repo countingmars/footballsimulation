@@ -1,12 +1,21 @@
 package position
 
-import "github.com/countingmars/fb/base"
+import (
+	"github.com/countingmars/fb/base/name"
+	"encoding/json"
+)
 
 
 type Position struct {
-	Name  base.Name `json:"name"`
+	Name  name.Name `json:"name"`
 	Point int       `json:"point"`
 }
+func (this Position) Json() string {
+	out, _ := json.Marshal(&this)
+	return string(out)
+}
+
+
 type Positions []Position
 
 func (this Positions) Clone() Positions {
@@ -17,23 +26,24 @@ func (this Positions) Clone() Positions {
 	return clone
 }
 
-func New(name base.Name) Position {
+
+func New(name name.Name) Position {
 	return Position{Name: name}
 }
 
 var (
-	GK = Position{Name: Names.GK}
-	DL = Position{Name: Names.DL}
-	DR = Position{Name: Names.DR}
-	DC = Position{Name: Names.DC}
-	WBL = Position{Name: Names.WBL}
-	WBR = Position{Name: Names.WBR}
-	DMC = Position{Name: Names.DMC}
-	ML = Position{Name: Names.ML}
-	MR = Position{Name: Names.MR}
-	MC = Position{Name: Names.MC}
-	AML = Position{Name: Names.AML}
-	AMR = Position{Name: Names.AMR}
-	AMC = Position{Name: Names.AMC}
-	STC = Position{Name: Names.STC}
+	GK = Position{Name: name.GK}
+	DL = Position{Name: name.DL}
+	DR = Position{Name: name.DR}
+	DC = Position{Name: name.DC}
+	WBL = Position{Name: name.WBL}
+	WBR = Position{Name: name.WBR}
+	DMC = Position{Name: name.DMC}
+	ML = Position{Name: name.ML}
+	MR = Position{Name: name.MR}
+	MC = Position{Name: name.MC}
+	AML = Position{Name: name.AML}
+	AMR = Position{Name: name.AMR}
+	AMC = Position{Name: name.AMC}
+	STC = Position{Name: name.STC}
 )

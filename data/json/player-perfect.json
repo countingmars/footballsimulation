@@ -38,8 +38,8 @@
       "name": "finish",
       "point": 20
     },
-    "gk": {
-      "name": "gk",
+    "goalkeeping": {
+      "name": "goalkeeping",
       "point": 20
     },
     "heading": {

@@ -1,8 +1,8 @@
 package stats
 
-import "github.com/countingmars/fb/base"
+import "github.com/countingmars/fb/base/name"
 
-type Ability map[base.Name]*Attribute
+type Ability map[name.Name]*Attribute
 
 func (this Ability) Add(another Ability) {
 	for key, value := range another {

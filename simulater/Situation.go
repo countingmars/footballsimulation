@@ -1,8 +1,8 @@
 package simulater
 
 import (
-	"github.com/countingmars/fb/base"
 	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/base/name"
 )
 
 type Situation struct {
@@ -27,6 +27,6 @@ func (this *Situation) Defender() zone.Zones {
 		return this.Left
 	}
 }
-func (this *Situation) ZoneName() base.Name {
+func (this *Situation) ZoneName() name.Name {
 	return this.Ball.ZoneName(this.Side)
 }

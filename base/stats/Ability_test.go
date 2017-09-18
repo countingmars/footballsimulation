@@ -1,11 +1,14 @@
 package stats
 
-import "testing"
+import (
+	"testing"
+	"github.com/countingmars/fb/base/name"
+)
 
 func TestAbility_Sum(t *testing.T) {
 	ability := Ability{
-		Names.Attack: &Attribute{Names.Attack, 1},
-		Names.Defence: &Attribute{Names.Defence, 1},
+		name.Attack: &Attribute{name.Attack, 1},
+		name.Defence: &Attribute{name.Defence, 1},
 	}
 
 	actual := ability.Sum()

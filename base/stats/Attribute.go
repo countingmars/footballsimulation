@@ -2,11 +2,11 @@ package stats
 
 import (
 	"sort"
-	"github.com/countingmars/fb/base"
+	"github.com/countingmars/fb/base/name"
 )
 
 type Attribute struct {
-	Name base.Name `json:"name"`
+	Name name.Name `json:"name"`
 	Point int `json:"point"`
 }
 
