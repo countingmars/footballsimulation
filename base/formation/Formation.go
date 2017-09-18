@@ -5,31 +5,31 @@ import (
 )
 
 var F442 = Formation {
-	NewPositionedPlayer(position.GK),
-	NewPositionedPlayer(position.DL),
-	NewPositionedPlayer(position.DR),
-	NewPositionedPlayer(position.DC),
-	NewPositionedPlayer(position.DC),
-	NewPositionedPlayer(position.ML),
-	NewPositionedPlayer(position.MR),
-	NewPositionedPlayer(position.MC),
-	NewPositionedPlayer(position.MC),
-	NewPositionedPlayer(position.STC),
-	NewPositionedPlayer(position.STC),
+	NewRole(position.GK),
+	NewRole(position.DL),
+	NewRole(position.DR),
+	NewRole(position.DC),
+	NewRole(position.DC),
+	NewRole(position.ML),
+	NewRole(position.MR),
+	NewRole(position.MC),
+	NewRole(position.MC),
+	NewRole(position.STC),
+	NewRole(position.STC),
 }
 
-type Formation []*PositionedPlayer
+type Formation []*Role
 
 func (this Formation) Set(point int) {
-	for _, positioned := range this {
-		positioned.Player.Ability.Set(point)
+	for _, role := range this {
+		role.Player.Ability.Set(point)
 	}
 }
 
 func (this Formation) Clone() Formation {
 	clone := Formation{}
-	for _, positioned := range this {
-		clone = append(clone, positioned.Clone())
+	for _, role := range this {
+		clone = append(clone, role.Clone())
 	}
 	return clone
 }

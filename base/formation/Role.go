@@ -5,18 +5,18 @@ import (
 	"github.com/countingmars/fb/base/player"
 )
 
-type PositionedPlayer struct {
+type Role struct {
 	Position position.Position `json: "position"`
 	Player *player.Player `json: "player"`
 }
 
-func (this PositionedPlayer) Clone() *PositionedPlayer {
+func (this Role) Clone() *Role {
 	player := this.Player.Clone()
-	return &PositionedPlayer{
+	return &Role{
 		Position: this.Position,
 		Player: player,
 	}
 }
-func NewPositionedPlayer(aPosition position.Position) *PositionedPlayer {
-	return &PositionedPlayer{Position: aPosition}
+func NewRole(aPosition position.Position) *Role {
+	return &Role{Position: aPosition}
 }

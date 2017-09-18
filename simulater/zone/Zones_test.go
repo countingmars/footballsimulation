@@ -11,13 +11,13 @@ import (
 func TestZones_Set(t *testing.T) {
 	dc := TestZone(
 		name.DC,
-		formation.TestPositionedPlayer(position.GK),
-		formation.TestPositionedPlayer(position.DC),
+		TestEntry(position.GK),
+		TestEntry(position.DC),
 	)
 	dl := TestZone(
 		name.DL,
-		formation.TestPositionedPlayer(position.DL),
-		formation.TestPositionedPlayer(position.WBL),
+		TestEntry(position.DL),
+		TestEntry(position.WBL),
 	)
 	zones := Zones{dc.Name: &dc, dl.Name: &dl}
 	zones.Set(1)
@@ -39,15 +39,15 @@ func TestZones_ZonesFrom(t *testing.T) {
 	assertThatZoneHasPlayers(t, zones[name.MC], 5)
 }
 func assertThatZoneHasPlayers(t *testing.T, aZone *Zone, expected int) {
-	if expected == len(aZone.PositionedPlayers) {
+	if expected == len(aZone.Entries) {
 		return
 	}
 
 	message := fmt.Sprintf("in 442, %s zone expected players are %d, but %d : %s",
 		aZone.Name,
 		expected,
-		len(aZone.PositionedPlayers),
-		aZone.PositionedPlayers.Json(),
+		len(aZone.Entries),
+		aZone.Entries.Json(),
 	)
 	panic(message)
 }

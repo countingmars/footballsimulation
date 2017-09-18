@@ -3,7 +3,7 @@ package simulater
 import (
 	"github.com/countingmars/fb/simulater/dice"
 	"github.com/countingmars/fb/base/team"
-	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/simulater/zone"
 )
 
 func Simulate(home *team.Team, away *team.Team) *Simulation {
@@ -73,11 +73,28 @@ func simulateHighlight(situation *Situation) Highlight {
 		}
 	}
 }
-func simulateBuildup(situation *Situation) bool {
-	offence := situation.Offender()[situation.ZoneName()].Offence()
-	defence := situation.Defender()[situation.ZoneName()].Defence()
+type Play interface {
+	Play()
+}
+type BuildupPlay struct {
+	Offender *zone.Zone
+	Defender *zone.Zone
 
-	return dice.Judge(offence, defence)
+	offence int
+	defence int
+}
+func (this BuildupPlay) Play() bool {
+	offence := this.Offender.Offence()
+	defence := this.Defender.Defence()
+	this.offence = dice.Throw(offence)
+	this.defence = dice.Throw(defence)
+	return this.offence > this.defence
+}
+func simulateBuildup(situation *Situation) bool {
+	play := BuildupPlay{}
+	play.Offender = situation.Offender()[situation.ZoneName()]
+	play.Defender = situation.Defender()[situation.ZoneName()]
+	return play.Play()
 }
 
 func simulateFinish(situation *Situation) Highlight {

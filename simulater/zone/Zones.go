@@ -10,10 +10,10 @@ type Zones map[name.Name]*Zone
 
 func ZonesFrom(aFormation formation.Formation) Zones {
 	zones := Zones{}
-	for _, each := range aFormation {
-		zoneNames := resolveZoneNames(each.Position)
-		for _, zoneName := range zoneNames {
-			zones.Get(zoneName).Add(each)
+	for _, role := range aFormation {
+		for _, zoneName := range PET.ZoneNamesFor(role.Position.Name) {
+			entry := &Entry{role.Player, role.Position, Stats{}}
+			zones.Get(zoneName).Add(entry)
 		}
 	}
 	return zones
@@ -30,8 +30,8 @@ func (this Zones) Get(name name.Name) *Zone {
 	zone, ok := this[name]
 	if ok == false {
 		zone = &Zone{
-			Name:              name,
-			PositionedPlayers: formation.PositionedPlayers{},
+			Name:  name,
+			Entries: Entries{},
 		}
 		this[name] = zone
 	}

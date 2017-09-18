@@ -5,11 +5,11 @@ import (
 	"github.com/countingmars/fb/base/player"
 )
 
-func TestPositionedPlayer(aPosition position.Position) *PositionedPlayer {
+func TestRole(aPosition position.Position) *Role {
 	aPlayer := player.TestPlayer(aPosition)
 	aPlayer.Positions = position.Positions{aPosition}
 
-	return &PositionedPlayer{
+	return &Role{
 		Position: aPosition,
 		Player:   aPlayer,
 	}
@@ -17,16 +17,16 @@ func TestPositionedPlayer(aPosition position.Position) *PositionedPlayer {
 
 func Test442() Formation {
 	return Formation{
-		TestPositionedPlayer(position.GK),
-		TestPositionedPlayer(position.DC),
-		TestPositionedPlayer(position.DC),
-		TestPositionedPlayer(position.DL),
-		TestPositionedPlayer(position.DR),
-		TestPositionedPlayer(position.ML),
-		TestPositionedPlayer(position.MR),
-		TestPositionedPlayer(position.MC),
-		TestPositionedPlayer(position.MC),
-		TestPositionedPlayer(position.STC),
-		TestPositionedPlayer(position.STC),
+		TestRole(position.GK),
+		TestRole(position.DC),
+		TestRole(position.DC),
+		TestRole(position.DL),
+		TestRole(position.DR),
+		TestRole(position.ML),
+		TestRole(position.MR),
+		TestRole(position.MC),
+		TestRole(position.MC),
+		TestRole(position.STC),
+		TestRole(position.STC),
 	}
 }

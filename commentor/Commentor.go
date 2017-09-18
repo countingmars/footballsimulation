@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/countingmars/fb/simulater"
 	"github.com/countingmars/fb/base/team"
-	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/simulater/zone"
 )
 
 func Comment(sim *simulater.Simulation) string {

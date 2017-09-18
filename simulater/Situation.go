@@ -1,7 +1,7 @@
 package simulater
 
 import (
-	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/simulater/zone"
 	"github.com/countingmars/fb/base/name"
 )
 

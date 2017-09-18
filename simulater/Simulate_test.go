@@ -3,7 +3,7 @@ package simulater
 import (
 	"testing"
 	"github.com/countingmars/fb/base/formation"
-	"github.com/countingmars/fb/base/zone"
+	"github.com/countingmars/fb/simulater/zone"
 )
 
 func TestSimulate_simulateBuildup(t *testing.T) {
@@ -14,6 +14,7 @@ func TestSimulate_simulateBuildup(t *testing.T) {
 	for i := 0; i < 100; i++ {
 		if false == simulateBuildup(newSituation(home, away)) {
 			t.Error("away ability is 0 so should always win")
+			return
 		}
 	}
 }
