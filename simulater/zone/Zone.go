@@ -3,6 +3,7 @@ package zone
 import (
 	"github.com/countingmars/fb/base/stats"
 	"github.com/countingmars/fb/base/name"
+	"github.com/countingmars/fb/simulater/zone/effect"
 )
 
 type Zone struct {
@@ -33,37 +34,33 @@ func (this *Zone) calculateAttr(key name.Name, factor float32) float32 {
 		return 0
 	}
 }
+
 func (this *Zone) Scoring() int {
-	var sum float32
-	for key, factor := range ScoringFactor.AttrFactors {
-		sum += this.calculateAttr(key, factor)
-	}
-	return int(sum)
+	f := effect.Formula{ScoringFactor.AttrFormulas(this), 1.0}
+	return int(f.Solve())
 }
 func (this *Zone) Possession() int {
-	return this.calculate(PossessionFactors)
+	return int(PossessionFactors.Formula(this).Solve())
 }
 
 func (this *Zone) Defence() int {
-	return this.calculate(DefenceFactors)
-}
-func (this *Zone) Offence() int {
-	return this.calculate(OffenceFactors)
+
+	return int(DefenceFactors.Formula(this).Solve())
 }
 
-func (this *Zone) calculate(positionAttrFactors ZoneAttrFactors) int {
-	var sum float32
-	for key, factor := range positionAttrFactors[this.Name].AttrFactors {
-		sum += this.calculateAttr(key, factor)
+func (this *Zone) Attribute(name name.Name) *stats.Attribute {
+	attribute, ok := this.Ability()[name]
+	if ok {
+		return attribute
+	} else {
+		return &stats.Attribute{}
 	}
-	sum *= positionAttrFactors[this.Name].Factor
-	return int(sum)
 }
 
 func (this *Zone) Sum() int {
 	sum := 0
-	for _, v := range this.Ability() {
-		sum += v.Point
+	for _, v := range this.Entries {
+		sum += v.Player.Ability.Sum()
 	}
 	return sum
 }

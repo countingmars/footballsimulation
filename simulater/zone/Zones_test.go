@@ -19,11 +19,11 @@ func TestZones_Set(t *testing.T) {
 		TestEntry(position.DL),
 		TestEntry(position.WBL),
 	)
-	zones := Zones{dc.Name: &dc, dl.Name: &dl}
+	zones := Zones{dc.Name: &dc, dl.Name: &dl} // 4 players in DC zone, DL zone
 	zones.Set(1)
 
-	if 46 != zones.Sum() {
-		t.Error("sum should be 46, but ", zones.Sum())
+	if 92 != zones.Sum() {
+		t.Error("sum should be 92, but ", zones.Sum())
 	}
 }
 func TestZones_ZonesFrom(t *testing.T) {

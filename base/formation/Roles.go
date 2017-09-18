@@ -1,7 +1,5 @@
 package formation
 
-import "encoding/json"
-
 type Roles []*Role
 
 func (this Roles) Clone() Roles {
@@ -10,8 +8,4 @@ func (this Roles) Clone() Roles {
 		clone = append(clone, each.Clone())
 	}
 	return clone
-}
-func (this Roles) Json() string {
-	out, _ := json.Marshal(this)
-	return string(out)
 }

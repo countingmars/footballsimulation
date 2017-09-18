@@ -4,6 +4,8 @@ import (
 	"github.com/countingmars/fb/simulater/dice"
 	"github.com/countingmars/fb/base/team"
 	"github.com/countingmars/fb/simulater/zone"
+	"github.com/countingmars/fb/base/name"
+	"github.com/countingmars/fb/simulater/zone/effect"
 )
 
 func Simulate(home *team.Team, away *team.Team) *Simulation {
@@ -77,23 +79,40 @@ type Play interface {
 	Play()
 }
 type BuildupPlay struct {
-	Offender *zone.Zone
-	Defender *zone.Zone
-
-	offence int
-	defence int
+	Offender zone.Zones
+	Defender zone.Zones
+	ZoneName name.Name
 }
 func (this BuildupPlay) Play() bool {
-	offence := this.Offender.Offence()
-	defence := this.Defender.Defence()
-	this.offence = dice.Throw(offence)
-	this.defence = dice.Throw(defence)
-	return this.offence > this.defence
+	offence := int(this.offence(this.Offender[this.ZoneName]))
+	defence := int(this.defence(this.Defender[this.ZoneName]))
+	if 0 < dice.Throw(offence) - dice.Throw(defence) {
+		return true
+	} else {
+		return false
+	}
+}
+func (this BuildupPlay) offence(zone *zone.Zone) float32 {
+	var sum float32
+	for _, entry := range zone.Entries {
+		playerFormula := effect.PlayerFormula{zone.Name, entry.Position.Name, entry.Player}
+		sum += playerFormula.Offence()
+	}
+	return sum
+}
+func (this BuildupPlay) defence(zone *zone.Zone) float32 {
+	var sum float32
+	for _, entry := range zone.Entries {
+		playerFormula := effect.PlayerFormula{zone.Name, entry.Position.Name, entry.Player}
+		sum += playerFormula.Defence()
+	}
+	return sum
 }
 func simulateBuildup(situation *Situation) bool {
 	play := BuildupPlay{}
-	play.Offender = situation.Offender()[situation.ZoneName()]
-	play.Defender = situation.Defender()[situation.ZoneName()]
+	play.ZoneName = situation.ZoneName()
+	play.Offender = situation.Offender()
+	play.Defender = situation.Defender()
 	return play.Play()
 }
 

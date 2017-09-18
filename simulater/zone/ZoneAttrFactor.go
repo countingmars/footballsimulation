@@ -2,16 +2,32 @@ package zone
 
 import (
 	"github.com/countingmars/fb/base/name"
+	"github.com/countingmars/fb/simulater/zone/effect"
 )
 
-type ZoneAttrFactor struct {
+type ZoneFactor struct {
 	Factor      float32
 	AttrFactors map[name.Name]float32
 }
-type ZoneAttrFactors map[name.Name]ZoneAttrFactor
+func (this ZoneFactor) AttrFormulas(zone *Zone) []effect.AttrFormula {
+	list := []effect.AttrFormula{}
+	for attrName, attrFactor := range this.AttrFactors {
+		list = append(list, effect.AttrFormula{zone.Attribute(attrName), attrFactor})
+	}
+	return list
+}
 
-var DefenceFactors = ZoneAttrFactors{
-	name.DC: ZoneAttrFactor{
+type ZoneFactors map[name.Name]ZoneFactor
+
+func (this ZoneFactors) Formula(zone *Zone) *effect.Formula {
+	zf := this[zone.Name]
+	formula := effect.Formula{zf.AttrFormulas(zone), zf.Factor}
+
+	return &formula
+}
+
+var DefenceFactors = ZoneFactors{
+	name.DC: ZoneFactor{
 		Factor: 3.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -30,7 +46,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 3.0,
 		},
 	},
-	name.DL: ZoneAttrFactor{
+	name.DL: ZoneFactor{
 		Factor: 2.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -49,7 +65,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.DR: ZoneAttrFactor{
+	name.DR: ZoneFactor{
 		Factor: 2.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -68,7 +84,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.MC: ZoneAttrFactor{
+	name.MC: ZoneFactor{
 		Factor: 2.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -87,7 +103,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.ML: ZoneAttrFactor{
+	name.ML: ZoneFactor{
 		Factor: 1.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -106,7 +122,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.MR: ZoneAttrFactor{
+	name.MR: ZoneFactor{
 		Factor: 1.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -125,7 +141,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.FC: ZoneAttrFactor{
+	name.FC: ZoneFactor{
 		Factor: 1.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -144,7 +160,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.FL: ZoneAttrFactor{
+	name.FL: ZoneFactor{
 		Factor: 1.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -163,7 +179,7 @@ var DefenceFactors = ZoneAttrFactors{
 			name.Strength: 1.5,
 		},
 	},
-	name.FR: ZoneAttrFactor{
+	name.FR: ZoneFactor{
 		Factor: 1.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -183,8 +199,8 @@ var DefenceFactors = ZoneAttrFactors{
 		},
 	},
 }
-var OffenceFactors = ZoneAttrFactors{
-	name.DC: ZoneAttrFactor{
+var OffenceFactors = ZoneFactors{
+	name.DC: ZoneFactor{
 		Factor: 1.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -201,7 +217,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 2.0,
 		},
 	},
-	name.DL: ZoneAttrFactor{
+	name.DL: ZoneFactor{
 		Factor: 1.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -219,7 +235,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 2.0,
 		},
 	},
-	name.DR: ZoneAttrFactor{
+	name.DR: ZoneFactor{
 		Factor: 1.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -237,7 +253,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 2.0,
 		},
 	},
-	name.MC: ZoneAttrFactor{
+	name.MC: ZoneFactor{
 		Factor: 2.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -256,7 +272,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 3.0,
 		},
 	},
-	name.ML: ZoneAttrFactor{
+	name.ML: ZoneFactor{
 		Factor: 2.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -275,7 +291,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 1.5,
 		},
 	},
-	name.MR: ZoneAttrFactor{
+	name.MR: ZoneFactor{
 		Factor: 2.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -294,7 +310,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 1.5,
 		},
 	},
-	name.FC: ZoneAttrFactor{
+	name.FC: ZoneFactor{
 		Factor: 3.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -313,7 +329,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 1.5,
 		},
 	},
-	name.FL: ZoneAttrFactor{
+	name.FL: ZoneFactor{
 		Factor: 2.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -332,7 +348,7 @@ var OffenceFactors = ZoneAttrFactors{
 			name.Teamwork: 1.5,
 		},
 	},
-	name.FR: ZoneAttrFactor{
+	name.FR: ZoneFactor{
 		Factor: 2.5,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -352,7 +368,8 @@ var OffenceFactors = ZoneAttrFactors{
 		},
 	},
 }
-var ScoringFactor = ZoneAttrFactor{
+
+var ScoringFactor = ZoneFactor{
 	Factor: 1.0,
 	AttrFactors: map[name.Name]float32 {
 		// technical factors
@@ -368,8 +385,8 @@ var ScoringFactor = ZoneAttrFactor{
 }
 
 
-var PossessionFactors = map[name.Name]ZoneAttrFactor{
-	name.DC: ZoneAttrFactor{
+var PossessionFactors = ZoneFactors{
+	name.DC: ZoneFactor{
 		Factor: 1.2,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -384,7 +401,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 1.2,
 		},
 	},
-	name.DL: ZoneAttrFactor{
+	name.DL: ZoneFactor{
 		Factor: 1.2,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -399,7 +416,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 1.5,
 		},
 	},
-	name.DR: ZoneAttrFactor{
+	name.DR: ZoneFactor{
 		Factor: 1.2,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -414,7 +431,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 1.5,
 		},
 	},
-	name.MC: ZoneAttrFactor{
+	name.MC: ZoneFactor{
 		Factor: 2.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -429,7 +446,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 1.2,
 		},
 	},
-	name.ML: ZoneAttrFactor{
+	name.ML: ZoneFactor{
 		Factor: 1.3,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -444,7 +461,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 2.0,
 		},
 	},
-	name.MR: ZoneAttrFactor{
+	name.MR: ZoneFactor{
 		Factor: 1.3,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -459,7 +476,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 2.0,
 		},
 	},
-	name.FC: ZoneAttrFactor{
+	name.FC: ZoneFactor{
 		Factor: 1.0,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -474,7 +491,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 1.5,
 		},
 	},
-	name.FL: ZoneAttrFactor{
+	name.FL: ZoneFactor{
 		Factor: 0.8,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
@@ -489,7 +506,7 @@ var PossessionFactors = map[name.Name]ZoneAttrFactor{
 			name.Speed: 1.5,
 		},
 	},
-	name.FR: ZoneAttrFactor{
+	name.FR: ZoneFactor{
 		Factor: 0.8,
 		AttrFactors: map[name.Name]float32 {
 			// technical factors
