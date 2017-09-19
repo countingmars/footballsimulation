@@ -5,7 +5,7 @@
     "code": "DE",
     "name": "Germany"
   },
-  "ability": {
+  "attributes": {
     "anticipation": {
       "name": "anticipation",
       "point": 20

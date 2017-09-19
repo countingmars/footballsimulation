@@ -2,7 +2,7 @@ package effect
 
 import "github.com/countingmars/fb/base/name"
 
-var ScoringZoneAbilityEffect = ZoneAbilityEffect{
+var ZoneAttributeEffectScoring = ZoneAttributeEffect{
 	name.DL: {
 		name.Dribble: 1.2, // technical factors
 		name.Shoot:   3.0, // mental factors

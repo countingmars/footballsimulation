@@ -4,8 +4,6 @@ import (
 	"github.com/countingmars/fb/simulater/dice"
 	"github.com/countingmars/fb/base/team"
 	"github.com/countingmars/fb/simulater/zone"
-	"github.com/countingmars/fb/base/name"
-	"github.com/countingmars/fb/simulater/zone/effect"
 )
 
 func Simulate(home *team.Team, away *team.Team) *Simulation {
@@ -65,7 +63,6 @@ func simulateHighlight(situation *Situation) Highlight {
 			return hl
 		}
 		possession++
-		situation.Ball.Forward(situation.Side)
 
 		if situation.Ball.CanFinish(situation.Side) {
 			hl := simulateFinish(situation)
@@ -73,51 +70,24 @@ func simulateHighlight(situation *Situation) Highlight {
 			situation.Ball.KickOff()
 			return hl
 		}
+
+		situation.Ball.Forward(situation.Side)
 	}
 }
-type Play interface {
-	Play()
-}
-type BuildupPlay struct {
-	Offender zone.Zones
-	Defender zone.Zones
-	ZoneName name.Name
-}
-func (this BuildupPlay) Play() bool {
-	offence := int(this.offence(this.Offender[this.ZoneName]))
-	defence := int(this.defence(this.Defender[this.ZoneName]))
-	if 0 < dice.Throw(offence) - dice.Throw(defence) {
+
+func simulateBuildup(situation *Situation) bool {
+	offence := zone.MakeZoneFormula(situation.OffenderZone()).Offence()
+	defence := zone.MakeZoneFormula(situation.DefenderZone()).Defence()
+
+	if 0 < dice.Throw(int(offence)) - dice.Throw(int(defence)) {
 		return true
 	} else {
 		return false
 	}
 }
-func (this BuildupPlay) offence(zone *zone.Zone) float32 {
-	var sum float32
-	for _, entry := range zone.Entries {
-		playerFormula := effect.PlayerFormula{zone.Name, entry.Position.Name, entry.Player}
-		sum += playerFormula.Offence()
-	}
-	return sum
-}
-func (this BuildupPlay) defence(zone *zone.Zone) float32 {
-	var sum float32
-	for _, entry := range zone.Entries {
-		playerFormula := effect.PlayerFormula{zone.Name, entry.Position.Name, entry.Player}
-		sum += playerFormula.Defence()
-	}
-	return sum
-}
-func simulateBuildup(situation *Situation) bool {
-	play := BuildupPlay{}
-	play.ZoneName = situation.ZoneName()
-	play.Offender = situation.Offender()
-	play.Defender = situation.Defender()
-	return play.Play()
-}
 
 func simulateFinish(situation *Situation) Highlight {
-	scoring := situation.Offender()[situation.ZoneName()].Scoring()
+	scoring := int(zone.MakeZoneFormula(situation.OffenderZone()).Scoring())
 	point := dice.Throw(scoring)
 
 	if point > scoring / 10 {

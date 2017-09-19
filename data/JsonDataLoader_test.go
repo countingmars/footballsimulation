@@ -18,7 +18,7 @@ func TestLoadJsonFile_player(t *testing.T) {
 	actual := player.Player{}
 	LoadJsonFile("/json/player-perfect.json", &actual)
 
-	if actual.Ability.Sum() != 460 {
-		t.Error("sum should be 460, but ", actual.Ability.Sum())
+	if actual.Attributes.Sum() != 460 {
+		t.Error("sum should be 460, but ", actual.Attributes.Sum())
 	}
 }

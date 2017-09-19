@@ -4,7 +4,7 @@ import "github.com/countingmars/fb/base/name"
 
 type PositionZoneEffect map[name.Name]Effect
 
-func (this PositionZoneEffect) ZoneNamesFor(positionName name.Name) name.Names {
+func (this PositionZoneEffect) ZoneNamesEffectedBy(positionName name.Name) name.Names {
 	zoneNames := name.Names{}
 	for zoneName, _ := range this[positionName] {
 		zoneNames = append(zoneNames, zoneName)
@@ -13,7 +13,7 @@ func (this PositionZoneEffect) ZoneNamesFor(positionName name.Name) name.Names {
 }
 
 
-var PositionZoneEffects = PositionZoneEffect{
+var ConstPositionZoneEffect = PositionZoneEffect{
 	name.GK: {
 		name.GK: 2.0,
 	},

@@ -2,9 +2,9 @@ package stats
 
 import "github.com/countingmars/fb/base/name"
 
-type Ability map[name.Name]*Attribute
+type Attributes map[name.Name]*Attribute
 
-func (this Ability) Add(another Ability) {
+func (this Attributes) Add(another Attributes) {
 	for key, value := range another {
 		attribute, ok := this[key]
 		if !ok {
@@ -15,8 +15,8 @@ func (this Ability) Add(another Ability) {
 	}
 }
 
-func (this Ability) Clone() Ability {
-	clone := Ability{}
+func (this Attributes) Clone() Attributes {
+	clone := Attributes{}
 	for name, attr := range this {
 		attrClone := attr.Clone()
 		clone[name] = &attrClone
@@ -24,12 +24,12 @@ func (this Ability) Clone() Ability {
 	return clone
 }
 
-func (this Ability) Set(point int) {
+func (this Attributes) Set(point int) {
 	for _, attr := range this {
 		attr.Point = point
 	}
 }
-func (this Ability) Sum() int {
+func (this Attributes) Sum() int {
 	sum := 0
 	for _, v := range this {
 		sum += v.Point

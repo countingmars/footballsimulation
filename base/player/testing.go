@@ -13,7 +13,7 @@ func TestPlayer(aPosition position.Position) *Player {
 	player.Age = 21
 	player.Country = base.Countries.DE
 	player.Positions = []position.Position{aPosition}
-	player.Ability = stats.Ability{
+	player.Attributes = stats.Attributes{
 		name.Speed: {Name: name.Speed, Point: 20},
 		name.Health: {Name: name.Health, Point: 20},
 		name.Workrate: {Name: name.Workrate, Point: 20},

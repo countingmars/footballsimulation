@@ -32,7 +32,9 @@ func (this *Ball) ZoneName(side Side) name.Name {
 
 
 func (this *Ball) CanFinish(side Side) bool {
-	return this.ZoneName(side) == name.GK
+	return this.ZoneName(side) == name.FC ||
+		this.ZoneName(side) == name.FL ||
+		this.ZoneName(side) == name.FR
 }
 
 var field = map[string]name.Name{
@@ -45,12 +47,6 @@ var field = map[string]name.Name{
 	"20left":   name.FR,
 	"21left":   name.FC,
 	"22left":   name.FL,
-	"30left":   name.GK,
-	"31left":   name.GK,
-	"32left":   name.GK,
-	"-10right": name.GK,
-	"-11right": name.GK,
-	"-12right": name.GK,
 	"00right":  name.FR,
 	"01right":  name.FC,
 	"02right":  name.FL,

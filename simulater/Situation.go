@@ -20,6 +20,12 @@ func (this *Situation) Offender() zone.Zones {
 		return this.Right
 	}
 }
+func (this *Situation) OffenderZone() *zone.Zone {
+	return this.Offender()[this.ZoneName()]
+}
+func (this *Situation) DefenderZone() *zone.Zone {
+	return this.Defender()[this.ZoneName()]
+}
 func (this *Situation) Defender() zone.Zones {
 	if this.Side == Left {
 		return this.Right

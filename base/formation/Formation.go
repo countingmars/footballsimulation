@@ -22,7 +22,7 @@ type Formation []*Role
 
 func (this Formation) Set(point int) {
 	for _, role := range this {
-		role.Player.Ability.Set(point)
+		role.Player.Attributes.Set(point)
 	}
 }
 

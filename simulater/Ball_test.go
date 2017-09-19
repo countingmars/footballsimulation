@@ -27,9 +27,8 @@ func testPositionFor(t *testing.T, ball Ball, side Side) {
 	ball.Forward(side)
 	ballPositionShouldBe(ball.ZoneName(side), "F", t)
 
-	ball.Forward(side)
-	if name.GK != ball.ZoneName(side) {
-		t.Error("chance should be returned as true")
+	if false == ball.CanFinish(side) {
+		t.Error(ball.ZoneName(side), " position should be finishing position")
 	}
 }
 

@@ -17,7 +17,7 @@ func main() {
 
 	RealMadrid := ManchesterUnited.Clone()
 	RealMadrid.Name = "Real Madrid"
-	RealMadrid.Formation.Set(10)
+	RealMadrid.Formation.Set(19)
 
 	manuWinCount := 0
 	realWinCount := 0

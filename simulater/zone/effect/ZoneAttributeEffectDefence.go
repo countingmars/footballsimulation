@@ -2,7 +2,7 @@ package effect
 
 import "github.com/countingmars/fb/base/name"
 
-var DefenceZoneAbilityEffect = ZoneAbilityEffect{
+var ZoneAttributeEffectDefence = ZoneAttributeEffect{
 	name.DL: {
 		name.Tackle: 2.5, // tech
 		name.Mark: 3.0,

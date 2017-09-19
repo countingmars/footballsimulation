@@ -2,7 +2,7 @@ package effect
 
 import "github.com/countingmars/fb/base/name"
 
-var PossessionZoneAbilityEffect = ZoneAbilityEffect{
+var ZoneAttributeEffectPossess = ZoneAttributeEffect{
 	name.DL: {
 		name.Pass:    1.5, // technical factors
 		name.Dribble: 1.5,
