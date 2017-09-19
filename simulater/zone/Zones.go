@@ -1,7 +1,6 @@
 package zone
 
 import (
-	"github.com/countingmars/fb/base/formation"
 	"github.com/countingmars/fb/base/name"
 	"github.com/countingmars/fb/simulater/zone/effect"
 )
@@ -9,11 +8,10 @@ import (
 type Zones map[name.Name]*Zone
 
 
-func ZonesFrom(aFormation formation.Formation) Zones {
+func ZonesFrom(entries Entries) Zones {
 	zones := Zones{}
-	for _, role := range aFormation {
-		for _, zoneName := range effect.ConstPositionZoneEffect.ZoneNamesEffectedBy(role.Position.Name) {
-			entry := &Entry{role.Player, role.Position, Stats{}}
+	for _, entry := range entries {
+		for _, zoneName := range effect.ConstPositionZoneEffect.ZoneNamesEffectedBy(entry.Position.Name) {
 			zones.Get(zoneName).Add(entry)
 		}
 	}
@@ -39,13 +37,6 @@ func (this Zones) Get(name name.Name) *Zone {
 		this[name] = zone
 	}
 	return zone
-}
-func (this Zones) Sum() int {
-	sum := 0
-	for _, zone := range this {
-		sum += zone.Sum()
-	}
-	return sum
 }
 
 func (this Zones) Clone() Zones {

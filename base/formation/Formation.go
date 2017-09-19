@@ -20,6 +20,14 @@ var F442 = Formation {
 
 type Formation []*Role
 
+func (this Formation) Sum() int {
+	sum := 0
+	for _, role := range this {
+		sum += role.Player.Attributes.Sum()
+	}
+	return sum
+}
+
 func (this Formation) Set(point int) {
 	for _, role := range this {
 		role.Player.Attributes.Set(point)

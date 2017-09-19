@@ -2,32 +2,13 @@ package zone
 
 import (
 	"testing"
-	"github.com/countingmars/fb/base/position"
 	"github.com/countingmars/fb/base/formation"
 	"github.com/countingmars/fb/base/name"
 	"fmt"
 )
 
-func TestZones_Set(t *testing.T) {
-	dc := TestZone(
-		name.DC,
-		TestEntry(position.GK),
-		TestEntry(position.DC),
-	)
-	dl := TestZone(
-		name.DL,
-		TestEntry(position.DL),
-		TestEntry(position.WBL),
-	)
-	zones := Zones{dc.Name: &dc, dl.Name: &dl} // 4 players in DC zone, DL zone
-	zones.Set(1)
-
-	if 92 != zones.Sum() {
-		t.Error("sum should be 92, but ", zones.Sum())
-	}
-}
 func TestZones_ZonesFrom(t *testing.T) {
-	zones := ZonesFrom(formation.F442)
+	zones := ZonesFrom(MakeEntries(formation.F442))
 
 	if 10 != len(zones) {
 		t.Error("expected zone count is 10, but ", len(zones))

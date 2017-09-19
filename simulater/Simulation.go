@@ -2,6 +2,7 @@ package simulater
 
 import (
 	"github.com/countingmars/fb/base/team"
+	"github.com/countingmars/fb/simulater/zone"
 )
 
 type Simulation struct {
@@ -9,6 +10,8 @@ type Simulation struct {
 	Away   *team.Team
 	First  Highlights
 	Second Highlights
+	HomeEntries zone.Entries
+	AwayEntries zone.Entries
 }
 
 func (this Simulation) Win() bool {

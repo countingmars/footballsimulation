@@ -6,8 +6,11 @@ import (
 	"github.com/countingmars/fb/simulater/zone"
 )
 
+func FourFourTwoZones() zone.Zones {
+	return zone.ZonesFrom(zone.MakeEntries(formation.Test442()))
+}
 func TestSimulate_simulateBuildup(t *testing.T) {
-	home := zone.ZonesFrom(formation.Test442())
+	home := FourFourTwoZones()
 	away := home.Clone()
 	away.Set(0)
 
@@ -20,7 +23,7 @@ func TestSimulate_simulateBuildup(t *testing.T) {
 }
 
 func TestSimulate_simulateAttack(t *testing.T) {
-	home := zone.ZonesFrom(formation.Test442())
+	home := FourFourTwoZones()
 	away := home.Clone()
 	away.Set(0)
 

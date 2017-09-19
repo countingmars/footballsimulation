@@ -11,12 +11,25 @@ func Comment(sim *simulater.Simulation) string {
 	return fmt.Sprintf("%s vs %s, %s\n" +
 		"possession: %d vs %d\n" +
 		"first half: %s\n" +
-		"second half: %s\n",
+		"second half: %s\n" +
+		"player grades\n" +
+		"%s",
 		commentTeam(sim.Home), commentTeam(sim.Away), commentResult(sim),
 		sim.Possession(simulater.Left), sim.Possession(simulater.Right),
 		commentHighlights(sim.First),
 		commentHighlights(sim.Second),
+		commentGrades(sim.HomeEntries, sim.AwayEntries),
 	)
+}
+func commentGrades(home zone.Entries, away zone.Entries) string {
+	var comment = ""
+	for i := 0; i < len(home); i++ {
+		comment += fmt.Sprintf("%s: %f vs %s:%f\n",
+			home[i].Position.Name, home[i].Stats.Grade,
+			away[i].Position.Name, away[i].Stats.Grade,
+		)
+	}
+	return comment
 }
 func commentHighlights(highlights simulater.Highlights) string {
 	var comments = []string{}
@@ -38,7 +51,7 @@ func commentHighlights(highlights simulater.Highlights) string {
 func commentTeam(aTeam *team.Team) string {
 	return fmt.Sprintf("%s (%d)",
 		aTeam.Name,
-		zone.ZonesFrom(aTeam.Formation).Sum(),
+		aTeam.Formation.Sum(),
 	)
 }
 func commentResult(sim *simulater.Simulation) string {

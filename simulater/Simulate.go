@@ -7,8 +7,10 @@ import (
 )
 
 func Simulate(home *team.Team, away *team.Team) *Simulation {
-	homeZones := zone.ZonesFrom(home.Formation)
-	awayZones := zone.ZonesFrom(away.Formation)
+	homeEntries := zone.MakeEntries(home.Formation)
+	awayEntries := zone.MakeEntries(away.Formation)
+	homeZones := zone.ZonesFrom(homeEntries)
+	awayZones := zone.ZonesFrom(awayEntries)
 
 	first := simulateHalf(homeZones, awayZones)
 	second := simulateHalf(awayZones, homeZones)
@@ -18,6 +20,8 @@ func Simulate(home *team.Team, away *team.Team) *Simulation {
 	simulation.Away = away
 	simulation.First = first
 	simulation.Second = second
+	simulation.HomeEntries = homeEntries
+	simulation.AwayEntries = awayEntries
 	return simulation
 }
 func newSituation(left zone.Zones, right zone.Zones) *Situation {
@@ -42,6 +46,7 @@ func simulateHalf(left zone.Zones, right zone.Zones) Highlights {
 		situation.Side = situation.Side.Reverse()
 		situation.Timer.Go()
 	}
+
 	return highlights
 }
 func (this *Situation) KickOff() {
@@ -70,7 +75,6 @@ func simulateHighlight(situation *Situation) Highlight {
 			situation.Ball.KickOff()
 			return hl
 		}
-
 		situation.Ball.Forward(situation.Side)
 	}
 }
@@ -79,15 +83,19 @@ func simulateBuildup(situation *Situation) bool {
 	offence := zone.MakeZoneFormula(situation.OffenderZone()).Offence()
 	defence := zone.MakeZoneFormula(situation.DefenderZone()).Defence()
 
-	if 0 < dice.Throw(int(offence)) - dice.Throw(int(defence)) {
+	if 0 < dice.Throw(offence) - dice.Throw(defence) {
+		situation.OffenderZone().MakeGradeUp()
+		situation.DefenderZone().MakeGradeDown()
 		return true
 	} else {
+		situation.DefenderZone().MakeGradeUp()
+		situation.OffenderZone().MakeGradeDown()
 		return false
 	}
 }
 
 func simulateFinish(situation *Situation) Highlight {
-	scoring := int(zone.MakeZoneFormula(situation.OffenderZone()).Scoring())
+	scoring := zone.MakeZoneFormula(situation.OffenderZone()).Scoring()
 	point := dice.Throw(scoring)
 
 	if point > scoring / 10 {
